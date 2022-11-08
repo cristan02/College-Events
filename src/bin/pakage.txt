@@ -1,0 +1,16 @@
+//creating pakage
+npx create-react-app project
+
+//install routes
+npm install react-router-dom@6
+
+//installing tailwind
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+//install axios 
+npm install axios
+
+//install date picker
+npm install react-datepicker --save
+
