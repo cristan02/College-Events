@@ -2,13 +2,12 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function Subevent() {
+function Activity() {
 //   const [title, setTitle] = useState("");
 //   const [date, setDate] = useState("");
 //   const [credits, setCredits] = useState();
 //   const [des, setDes] = useState("");
 //   const [department, setDepartment] = useState([]);
-//   const [event, setEvent] = useState([]);
 //   const [photo1, setPhoto1] = useState("");
 //   const [photo2, setPhoto2] = useState("");
 
@@ -25,17 +24,6 @@ function Subevent() {
 //         });
 //       });
 //       setDepartment(department_options);
-//     });
-//   }, []);
-
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((event) => {
-//         event_options.push({
-//           value: event._id,
-//           text: `${event.fname}`,
-//         });
-//       });
-//       setEvent(event_options);
 //     });
 //   }, []);
 
@@ -56,9 +44,6 @@ function Subevent() {
 //         break;
 //       case "Department":
 //         setDepartment(value);
-//         break;
-//       case "Event":
-//         setEvent(value);
 //         break;
 //       case "Photo1":
 //         setPhoto1(value);
@@ -81,12 +66,11 @@ function Subevent() {
 //         credits,
 //         des,
 //         department_id,
-//         event_id,
 //         photo1,
 //         photo2,
 //       })
 //       .then((res) => {
-//         alert("Subevent created successfully");
+//         alert("Activity created successfully");
 //       });
 
 //     formRef.current.reset();
@@ -97,7 +81,7 @@ function Subevent() {
      py-10 px-10 min-h-screen ml-[253px]"
   >
     <div className="flex flex-col text-[30px] justify-center items-center p-4">
-      Create a New Subevent
+      Create a New Activity
       <p className="p-2"></p>
       <form  className="w-1/2">
       {/* ref={formRef} onSubmit={handleSubmit} */}
@@ -186,25 +170,6 @@ function Subevent() {
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 />
               </div>
-
-              <div className="col-span-6 sm:col-span-6">
-                <label
-                  htmlFor="event"
-                  className="block text-sm font-medium text-gray-700">
-                  Event
-                </label>
-                <select
-                //   onChange={handleChange}
-                  id="event"
-                  name="Event"
-                  className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {event.map((event, id) => (
-                    <option key={id} value={event.value}>
-                      {event.text}
-                    </option>
-                  ))} */}
-                </select>
-              </div>
               
               <div className="col-span-6 sm:col-span-3">
                 <label
@@ -250,4 +215,4 @@ function Subevent() {
   );
 }
 
-export default Subevent;
+export default Activity;

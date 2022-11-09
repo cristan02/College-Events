@@ -9,6 +9,8 @@ import SubEvent from './routes/Home/SubEvent'
 import Events from './routes/Events'
 import CreateMainEvent from './routes/Event/CreateMainEvent'
 import CreateSubEvent from './routes/Event/CreateSubEvent'
+import CreateActivity from './routes/Event/CreateActivity'
+import CreateWorkshop from './routes/Event/CreateWorkshop'
 import Filter from './routes/Event/Filter'
 import Letter from './routes/Letter'
 import Graph from './routes/Graph'
@@ -29,7 +31,9 @@ function App() {
         <Route path="/Home/SubEvent" element={<SubEvent />} />
         <Route path="/Events" element={<Events />} />
         <Route path="/Event/CreateMainEvent" element={<CreateMainEvent />} />
-        <Route path="/CreateSubEvent" element={<CreateSubEvent />} />
+        <Route path="/Event/CreateSubEvent" element={<CreateSubEvent />} />
+        <Route path="/Event/CreateActivity" element={<CreateActivity />} />
+        <Route path="/Event/CreateWorkshop" element={<CreateWorkshop />} />
         <Route path="/Event/Filter" element={<Filter />} />
         <Route path="/Letter" element={<Letter />} />
         <Route path="/Graph" element={<Graph />} />
@@ -40,5 +44,6 @@ function App() {
     </div>
   )
 }
+
 
 export default App

@@ -112,6 +112,7 @@ select * from subeventtalk;
 			group by combo.d_name;
 		
     /* yearly */
+		call getEventsNo(8); /* send all months from 1-12 in loop */
 		SELECT SUM(combo.numActivity) AS numActivity , combo.d_name
 		FROM (	select count(*) as numActivity , department.name as d_name 
 				from department , subeventtalk 
@@ -144,4 +145,3 @@ select * from subeventtalk;
     
     
     
-call getEventsNo(8);

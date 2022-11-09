@@ -35,7 +35,7 @@ function Graph()
     setData(deptdata);
   })
 
-  const COLORS=['#0088FE','#00C49F','#FFBB28','#FF8042','#FF42A6','#BA42FF','#42F6FF','#FF5342','#FFFF50','#92FF50',    '#FF5050','#FF5050','#122771','#127154','#410D59','#217E42','#737F3A','#FFD15F','#F86200','#E49797'];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042' , '#3f3f3f'];
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -49,11 +49,15 @@ function Graph()
     >
 
       <div className='flex justify-center text-xl p-2'>
-          <div className=''><b>Departmental Performances</b></div>
-                
+          <div className=''><b>DepartMental Performances</b></div>
+                <select className='pr-1' onChange={getDept}>
+                  { department.map((dept)=>(
+                    <option value={dept}>{dept}</option>
+                  ))}
+                </select>
       </div>
 
-      <p className='p-6'></p>
+      <p className='p-1'></p>
 
       <div className='w-full flex justify-between font-semibold px-80'>
         <div className='flex '>
@@ -72,33 +76,31 @@ function Graph()
       </div>
 
 
-      <div className='w-full h-full flex items-center justify-center '>
-          <div className=' min-w-[600px] h-[380px] rounded-lg py-8 pt-10 px-4 flex items-center bg-gray-900'>
+      <div className='w-full h-full flex items-center justify-center'>
+          <div className=' w-[600px] h-[380px] rounded-lg py-8 pt-10 px-4'>
           {
             data ?
 
             graph ? 
-            
-          <ResponsiveContainer width="100%" height="100%">
-          <PieChart width={400} height={400}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={false}
-              data={data}
-              cx="50%"
-              cy="50%"
-              outerRadius={125}
-              fill="#8884d8"
-              label
-              
-            >
-              {data && data.map((entry, index) => (
-                <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-           </ResponsiveContainer>
+            <ResponsiveContainer width="100%" height="100%">
+            <PieChart width="400" height="400">
+              <Pie
+                dataKey="value"
+                isAnimationActive={false}
+                data={data}
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                fill="#8884d8"
+                
+              >
+                {data && data.map((entry, index) => (
+                  <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
             
             : <ResponsiveContainer width="100%" height="100%">
             <BarChart

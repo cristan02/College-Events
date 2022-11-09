@@ -14,3 +14,23 @@ npm install axios
 //install date picker
 npm install react-datepicker --save
 
+// to download pdf
+//npm install html2canvas jspdf
+//npm install --save html-to-image
+npm install bootstrap react-to-print --save
+
+//charts
+//npm install --save react-bar-chart
+//npm install --save react-chartjs-2 chart.js
+npm install recharts
+
+//apis
+npm install express
+npm install cons
+npm install body-parser
+npm install mysql2
+npm install mongoose
+
+npm install nodemon
+
+npm install axios

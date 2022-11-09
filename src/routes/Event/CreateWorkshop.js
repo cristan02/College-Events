@@ -2,40 +2,28 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function Subevent() {
+function Workshop() {
 //   const [title, setTitle] = useState("");
 //   const [date, setDate] = useState("");
-//   const [credits, setCredits] = useState();
 //   const [des, setDes] = useState("");
-//   const [department, setDepartment] = useState([]);
-//   const [event, setEvent] = useState([]);
 //   const [photo1, setPhoto1] = useState("");
 //   const [photo2, setPhoto2] = useState("");
+
+//   const [faculty, setFaculty] = useState([]);
 
 //   const formRef = useRef();
 
 //   useEffect(() => {
-//     const department_options = [{ value: "", text: "--Choose an option--" }];
+//     const faculty_options = [{ value: "", text: "--Choose an option--" }];
 
 //     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((department) => {
-//         department_options.push({
-//           value: department._id,
-//           text: `${department.fname}`,
+//       res.data.forEach((faculty) => {
+//         faculty_options.push({
+//           value: faculty._id,
+//           text: `${faculty.fname} ${faculty.lname}`,
 //         });
 //       });
-//       setDepartment(department_options);
-//     });
-//   }, []);
-
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((event) => {
-//         event_options.push({
-//           value: event._id,
-//           text: `${event.fname}`,
-//         });
-//       });
-//       setEvent(event_options);
+//       setFaculty(faculty_options);
 //     });
 //   }, []);
 
@@ -48,17 +36,11 @@ function Subevent() {
 //       case "Date":
 //         setDate(formatDate(value));
 //         break;
-//       case "Credits":
-//         setCredits(value);
-//         break;
 //       case "Des":
 //         setDes(value);
 //         break;
-//       case "Department":
-//         setDepartment(value);
-//         break;
-//       case "Event":
-//         setEvent(value);
+//       case "Faculty":
+//         setFaculty(value);
 //         break;
 //       case "Photo1":
 //         setPhoto1(value);
@@ -78,15 +60,13 @@ function Subevent() {
 //       .post("", {
 //         title,
 //         date,
-//         credits,
 //         des,
-//         department_id,
-//         event_id,
+//         faculty_id,
 //         photo1,
 //         photo2,
 //       })
 //       .then((res) => {
-//         alert("Subevent created successfully");
+//         alert("Workshop created successfully");
 //       });
 
 //     formRef.current.reset();
@@ -97,7 +77,7 @@ function Subevent() {
      py-10 px-10 min-h-screen ml-[253px]"
   >
     <div className="flex flex-col text-[30px] justify-center items-center p-4">
-      Create a New Subevent
+      Create a New Workshop
       <p className="p-2"></p>
       <form  className="w-1/2">
       {/* ref={formRef} onSubmit={handleSubmit} */}
@@ -136,36 +116,20 @@ function Subevent() {
                 />
               </div>
 
-              <div className="col-span-6 sm:col-span-1">
+              <div className="col-span-6 sm:col-span-4">
                 <label
-                  htmlFor="credits"
+                  htmlFor="faculty"
                   className="block text-sm font-medium text-gray-700">
-                  Credits
-                </label>
-                <input
-                  required
-                //   onChange={handleChange}
-                  type="number"
-                  name="Credits"
-                  id="credits"
-                  className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
-                />
-              </div>
-              
-              <div className="col-span-6 sm:col-span-3">
-                <label
-                  htmlFor="department"
-                  className="block text-sm font-medium text-gray-700">
-                  Department
+                  Faculty
                 </label>
                 <select
                 //   onChange={handleChange}
-                  id="department"
-                  name="Department"
+                  id="faculty"
+                  name="Faculty"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {deprtment.map((department, id) => (
-                    <option key={id} value={department.value}>
-                      {department.text}
+                  {/* {faculty.map((faculty, id) => (
+                    <option key={id} value={faculty.value}>
+                      {faculty.text}
                     </option>
                   ))} */}
                 </select>
@@ -185,25 +149,6 @@ function Subevent() {
                   id="des"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                 />
-              </div>
-
-              <div className="col-span-6 sm:col-span-6">
-                <label
-                  htmlFor="event"
-                  className="block text-sm font-medium text-gray-700">
-                  Event
-                </label>
-                <select
-                //   onChange={handleChange}
-                  id="event"
-                  name="Event"
-                  className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {event.map((event, id) => (
-                    <option key={id} value={event.value}>
-                      {event.text}
-                    </option>
-                  ))} */}
-                </select>
               </div>
               
               <div className="col-span-6 sm:col-span-3">
@@ -250,4 +195,4 @@ function Subevent() {
   );
 }
 
-export default Subevent;
+export default Workshop;
