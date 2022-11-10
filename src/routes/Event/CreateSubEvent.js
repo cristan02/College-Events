@@ -7,37 +7,38 @@ function Subevent() {
 //   const [date, setDate] = useState("");
 //   const [credits, setCredits] = useState();
 //   const [des, setDes] = useState("");
-//   const [department, setDepartment] = useState([]);
-//   const [event, setEvent] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [events, setEvents] = useState([]);
 //   const [photo1, setPhoto1] = useState("");
 //   const [photo2, setPhoto2] = useState("");
 
 //   const formRef = useRef();
 
-//   useEffect(() => {
-//     const department_options = [{ value: "", text: "--Choose an option--" }];
+useEffect(() => {
+  // const department_options = [{ value: "", text: "--Choose an option--" }];
+  const event_options = [{ value: "", text: "--Choose an option--" }];
 
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((department) => {
-//         department_options.push({
-//           value: department._id,
-//           text: `${department.fname}`,
-//         });
-//       });
-//       setDepartment(department_options);
-//     });
-//   }, []);
+  // axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+  //   res.data.forEach((department) => {
+  //     department_options.push({
+  //       value: department.d_id,
+  //       text: department.name,
+  //     });
+  //   });
+  //   setDepartments(department_options);
+  // });
 
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((event) => {
-//         event_options.push({
-//           value: event._id,
-//           text: `${event.fname}`,
-//         });
-//       });
-//       setEvent(event_options);
-//     });
-//   }, []);
+  axios.get("http://localhost:").then((res) => {
+    res.data.forEach((event) => {
+      event_options.push({
+        value: event._id,
+        text: `${event.fname}`,
+      });
+    });
+    setEvents(event_options);
+  });
+}, []);
+
 
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
@@ -152,7 +153,7 @@ function Subevent() {
                 />
               </div>
               
-              <div className="col-span-6 sm:col-span-3">
+              {/* <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="department"
                   className="block text-sm font-medium text-gray-700">
@@ -163,13 +164,13 @@ function Subevent() {
                   id="department"
                   name="Department"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {deprtment.map((department, id) => (
+                  {departments.map((department, id) => (
                     <option key={id} value={department.value}>
                       {department.text}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
-              </div>
+              </div> */}
 
               <div className="col-span-6 sm:col-span-6">
                 <label

@@ -45,12 +45,13 @@ function Graph()
    
     axios.get("http://localhost:5000/graph/"+type).then((res) => {
       setData(res.data);
+      console.log(res.data);
     })  
    
     console.log(graph);
     console.log(data);
     
-  })
+  },[])
 
   const COLORS=['#0088FE','#00C49F','#FFBB28','#FF8042','#FF42A6','#BA42FF','#42F6FF','#FF5342','#FFFF50','#92FF50',    '#FF5050','#FF5050','#122771','#127154','#410D59','#217E42','#737F3A','#FFD15F','#F86200','#E49797'];
   const RADIAN = Math.PI / 180;
@@ -101,7 +102,7 @@ function Graph()
               <Pie
                 dataKey="value"
                 isAnimationActive={false}
-                data={data}
+                data={deptdata}
                 cx="50%"
                 cy="50%"
                 outerRadius={125}
@@ -109,7 +110,7 @@ function Graph()
                 label
                 
               >
-                {data.map((entry, index) => (
+                {deptdata.map((entry, index) => (
                   <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
@@ -137,7 +138,7 @@ function Graph()
               <Tooltip />
               <Legend />
               <CartesianGrid strokeDasharray="3 3" />
-              <Bar dataKey="value" fill="crimson" background={{ fill: '#eee' }} />
+              <Bar dataKey="value" fill="#DE6C83" background="{{ fill: '#eee' }}" />
             </BarChart>
             </ResponsiveContainer>  
 
@@ -162,7 +163,7 @@ const backgroundColor = ["green","red","yellow","pink","brown","orange","cyan","
 
 
 const deptdata = [
-  {name: 'Computer science', value : 3}, 
+  {name: 'CS', value : 3}, 
   {name: 'Chemistry', value : 2}, 
   {name: 'English', value : 5}, 
   {name: 'Bio chem', value : 8}, 

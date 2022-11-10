@@ -80,7 +80,7 @@ function Home() {
           <div className='flex flex-col '>
               
                 <div>
-                  <h1 className='text-xl text-gray-800 font-bold '>Events</h1>
+                  <h1 className='text-xl text-gray-800 decoration-4 underline decoration-sky-500 font-bold '>Events</h1>
                   <p className='p-1'></p>
                   <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
                   {
@@ -89,7 +89,7 @@ function Home() {
                           getMainEvent(event)
                         }}>
                           <img className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] rounded-lg  justify-center items-end  ' src={event.photo1}></img>
-                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold text-grey-200 capitalize shadow'>{event.ename}
+                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold text-sky-200 backdrop-brightness-50 backdrop-blur-sm capitalize'>{event.ename}
                           </div>
                         </div>
                     ))}
@@ -99,7 +99,7 @@ function Home() {
 
               <p className='p-4'></p>
 
-              <h1 className='text-xl text-gray-800 font-bold '>Workshop</h1>
+              <h1 className='text-xl text-gray-800 decoration-4 underline decoration-pink-500 font-bold '>Workshop</h1>
               <p className='p-1'></p>
               <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
               {
@@ -108,7 +108,7 @@ function Home() {
                           getWorkshop(workshop)
                         }}>
                           <img className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] rounded-lg  justify-center items-end  ' src={workshop.photo1}></img>
-                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold text-grey-200 capitalize shadow'>{workshop.category}
+                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold backdrop-blur-sm capitalize text-pink-200 backdrop-brightness-50'>{workshop.category}
                           </div>
                         </div>
                     ))}
@@ -116,7 +116,7 @@ function Home() {
 
               <p className='p-4'></p>
 
-              <h1 className='text-xl text-gray-800 font-bold '>Activity</h1>
+              <h1 className='text-xl text-gray-800 decoration-4 underline decoration-yellow-300 font-bold '>Activity</h1>
               <p className='p-1'></p>
               <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
               {
@@ -125,7 +125,7 @@ function Home() {
                           getActivity(activity)
                         }}>
                           <img className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] rounded-lg  justify-center items-end  ' src={activity.photo1}></img>
-                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold text-grey-200 capitalize shadow'>{activity.stename}
+                          <div className='absolute bottom-0 flex justify-center w-full text-lg font-bold text-yellow-100 backdrop-brightness-50 backdrop-blur-sm capitalize'>{activity.stename}
                           </div>
                         </div>
                 ))}

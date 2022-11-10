@@ -5,24 +5,24 @@ import React, { useEffect, useRef, useState } from "react";
 function Event() {
 //   const [title, setTitle] = useState("");
 //   const [date, setDate] = useState("");
-//   const [department, setDepartment] = useState([]);
+  const [departments, setDepartments] = useState([]);
 //   const [photo1, setPhoto1] = useState("");
 
 //   const formRef = useRef();
 
-//   useEffect(() => {
-//     const department_options = [{ value: "", text: "--Choose an option--" }];
+  useEffect(() => {
+    const department_options = [{ value: "", text: "--Choose an option--" }];
 
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((department) => {
-//         department_options.push({
-//           value: department._id,
-//           text: `${department.fname}`,
-//         });
-//       });
-//       setDepartment(department_options);
-//     });
-//   }, []);
+    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+      res.data.forEach((department) => {
+        department_options.push({
+          value: department.d_id,
+          text: department.name,
+        });
+      });
+      setDepartments(department_options);
+    });
+  }, []);
 
 //   const handleChange = (e) => {
 //     const { name, value } = e.target;
@@ -116,11 +116,11 @@ function Event() {
                   id="department"
                   name="Department"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {deprtment.map((department, id) => (
+                  {departments.map((department, id) => (
                     <option key={id} value={department.value}>
                       {department.text}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </div>
 

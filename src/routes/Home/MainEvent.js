@@ -43,7 +43,7 @@ function MainEvent(props) {
         <p className="p-2"></p>
         <div className="flex flex-col">
           {subevents && subevents.map((event) => (
-            <div className="flex gap-4 justify-center items-center py-2">
+            <div className="flex gap-4  py-2">
               <img
                 className="min-w-[220px] max-w-[220px] max-h-[160px] min-h-[160px] rounded-lg  justify-center items-end  "
                 src={event.photo1}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div className="fixed text-gray-600 px-1">
+    <div className="fixed text-gray-800 px-1">
       <div className="w-[250px] min-h-screen h-full border-r-2 py-2">
         <div className="flex items-center py-4 px-1">
           <img src="../logo.png" className="w-8"></img>
@@ -12,8 +12,8 @@ function Navbar() {
 
         <p className="p-0"></p>
 
-        <ul className="first-line:flex flex-col list-none  text-gray-400 justify-left px-1 ">
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+        <ul className="first-line:flex flex-col list-none  text-gray-800 justify-left px-1 ">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/">
               <div className="flex flex-row items-center">
                 <svg
@@ -28,7 +28,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Events">
               <div className="flex flex-row items-center">
                 <svg
@@ -43,7 +43,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Letter">
               <div className="flex flex-row items-center">
                 <svg
@@ -58,7 +58,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Letter">
               <div className="flex flex-row items-center">
                 <svg
@@ -73,7 +73,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Graph">
               <div className="flex flex-row items-center">
                 <svg
@@ -88,7 +88,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Credit">
               <div className="flex flex-row items-center">
                 <svg

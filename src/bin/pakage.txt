@@ -34,3 +34,6 @@ npm install mongoose
 npm install nodemon
 
 npm install axios
+
+
+//Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
