@@ -223,7 +223,7 @@ app.get('/graph/yearly', (req, res) => {
 })
 
 app.get('/credits', (req, res) => {
-  const q = `select student.s_id as roll_no , fname , lname , sum(credits) as tot_credits
+  const q = `select student.s_id as roll_no ,year_joined, fname , lname , sum(credits) as tot_credits
   from credits , student , subeventtalk
   where student.s_id = credits.s_id and credits.ste_id = subeventtalk.ste_id and student.status is  null
   group by (student.s_id);`
@@ -267,9 +267,10 @@ app.get('/rollno', (req, res) => {
 })
 
 app.post('/post/event', (req, res) => {
-  const q = 'insert into mevent values ( null , ? , ? , ? , ?);'
-  const { name, date, image, id } = req.body
-  db.query(q, [name, date, image, id], (err, rows) => {
+  const q =
+    'insert into mevent (ename,startdate,photo1,d_id) values (  ? , ? , ? , ?);'
+  const { ename, startdate, photo1, d_id } = req.body
+  db.query(q, [ename, startdate, photo1, d_id], (err, rows) => {
     if (err) {
       res.send(err)
     } else {
@@ -328,36 +329,32 @@ app.post('/post/credits', (req, res) => {
   })
 })
 
-// app.put("/api/appointment/:id", (req, res) => {
-//   const q = `
-//   update appointment
-//   set status = ?, fees_charged = ?, observations = ?, prescription = ?
-//   where id = ?
-//   `;
-//   const { status, fees_charged, observations, prescription } = req.body;
-//   db.query(
-//     q,
-//     [status, fees_charged, observations, prescription, req.params.id],
-//     (err, rows) => {
-//       if (err) {
-//         res.send(err);
-//       } else {
-//         res.send("Success");
-//       }
-//     }
-//   );
-// });
+app.put('/student/update/:id', (req, res) => {
+  const q = `
+  update student
+  set fname = ?, lname = ?
+  where s_id = ?
+  `
+  const { fname, lname } = req.body
+  db.query(q, [fname, lname, req.params.id], (err, rows) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send('Success')
+    }
+  })
+})
 
-// app.delete("/api/appointment/:id", (req, res) => {
-//   const q = "delete from appointment where id = ?";
-//   db.query(q, [req.params.id], (err, rows) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send("Success");
-//     }
-//   });
-// });
+app.delete('/student/delete/:id', (req, res) => {
+  const q = 'delete from student where s_id = ?'
+  db.query(q, [req.params.id], (err, rows) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send('Success')
+    }
+  })
+})
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)

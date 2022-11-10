@@ -3,12 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
 function Event() {
-//   const [title, setTitle] = useState("");
-//   const [date, setDate] = useState("");
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
   const [departments, setDepartments] = useState([]);
-//   const [photo1, setPhoto1] = useState("");
+  const [photo1, setPhoto1] = useState("");
+  const [dept, setDept] = useState("");
 
-//   const formRef = useRef();
+  const formRef = useRef();
 
   useEffect(() => {
     const department_options = [{ value: "", text: "--Choose an option--" }];
@@ -24,42 +25,42 @@ function Event() {
     });
   }, []);
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     switch (name) {
-//       case "Title":
-//         setTitle(value);
-//         break;
-//       case "Date":
-//         setDate(formatDate(value));
-//         break;
-//       case "Department":
-//         setDepartment(value);
-//         break;
-//       case "Photo1":
-//         setPhoto1(value);
-//         break;
-//       default:
-//         break;
-//     }
-//   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "Title":
+        setTitle(value);
+        break;
+      case "Date":
+        setDate(value);
+        break;
+      case "Department":
+        setDept(value);
+        break;
+      case "Photo1":
+        setPhoto1(value);
+        break;
+      default:
+        break;
+    }
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(title,date,dept,photo1);
+    axios
+      .post("http://localhost:5000/post/event", {
+        ename:title,
+        startdate:date,
+        d_id:dept,
+        photo1,
+      })
+      .then((res) => {
+        alert("Activity created successfully");
+      });
+      formRef.current.reset();
 
-//     axios
-//       .post("", {
-//         title,
-//         date,
-//         department_id,
-//         photo1,
-//       })
-//       .then((res) => {
-//         alert("Activity created successfully");
-//       });
-
-//     formRef.current.reset();
-//   };
+  };
   return (
     <div
     className="w-full  text-md text-gray-800 flex flex-col max-w-full
@@ -68,8 +69,8 @@ function Event() {
     <div className="flex flex-col text-[30px] justify-center items-center p-4">
       Create a Main Event
       <p className="p-2"></p>
-      <form  className="w-1/2">
-      {/* ref={formRef} onSubmit={handleSubmit} */}
+      <form  className="w-1/2" onSubmit={handleSubmit} ref={formRef} >
+      
         <div className="overflow-hidden shadow-xl shadow-blue-200 sm:rounded-md">
           <div className="bg-white px-4 py-5 sm:p-6">
             <div className="grid grid-cols-6 gap-6">
@@ -81,7 +82,7 @@ function Event() {
                   Title
                 </label>
                 <input
-                //   onChange={handleChange}
+                  onChange={handleChange}
                   type="text"
                   id="Title"
                   name="Title"
@@ -97,7 +98,7 @@ function Event() {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                  onChange={handleChange}
                   type="date"
                   name="Date"
                   id="date"
@@ -112,7 +113,7 @@ function Event() {
                   Department
                 </label>
                 <select
-                //   onChange={handleChange}
+                   onChange={handleChange}
                   id="department"
                   name="Department"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
@@ -132,7 +133,7 @@ function Event() {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                   onChange={handleChange}
                   type="text"
                   name="Photo1"
                   id="photo1"

@@ -144,7 +144,7 @@ function Graph()
 
             : 
 
-            <div className='bg-white'>hey there</div>
+            <div className='text-white'>loading...</div>
           }
           </div>
       </div>

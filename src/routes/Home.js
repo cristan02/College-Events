@@ -71,7 +71,7 @@ function Home() {
       setActivity(res.data);
     });
     
-  })
+  },[])
 
   return(
 

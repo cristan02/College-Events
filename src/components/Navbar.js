@@ -58,7 +58,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
+          {/* <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Letter">
               <div className="flex flex-row items-center">
                 <svg
@@ -71,7 +71,7 @@ function Navbar() {
                 <span className="px-3">Departmental performance</span>
               </div>
             </Link>
-          </li>
+          </li> */}
 
           <li className="nav-item transition ease-in-out decoration-black decoration-2 hover:underline hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100">
             <Link to="/Graph">

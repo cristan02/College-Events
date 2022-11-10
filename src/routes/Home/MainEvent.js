@@ -13,7 +13,7 @@ function MainEvent(props) {
   useEffect(() => {
      axios.get("http://localhost:5000/home/events/"+ location.state.id).then((res) => {
       setSubEvents(res.data);
-    });
+    },[]);
 
 
   })
