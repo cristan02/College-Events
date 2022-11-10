@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import axios from "axios";
 
 function Filter(props) 
 {
@@ -10,17 +11,17 @@ function Filter(props)
   const [endDate, setEndDate] = useState(new Date());
   const [selectdept , setSelectDept] = useState("Computer Science");
 
-  const [dept , setDept] = useState([]);
+  const [dept , setDept] = useState([{d_id:null,name:"All"}]);
   const [activity , setActivity] = useState([]);
   const [workshop , setWorkshop] = useState([])
   const [event , setEvent] = useState([]);
   const [subevent , setSubEvent] = useState([]);
 
-
-
-
   useEffect(() => {
-    setDept(department);
+    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+      setDept(res.data);
+    });
+
     setActivity(act);
     setWorkshop(work);
     setEvent(events);
@@ -30,8 +31,20 @@ function Filter(props)
     setSelectDept(e.target.value);
   };
 
+  const filter = () =>{
+    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+      setDept(res.data);
+    });
 
+    // axios.get("http://localhost:5000/event/filter/activities/:id/:start/:end").then((res) => {
+    //   setDept(res.data);
+    // });
 
+     axios.get("http://localhost:5000/event/filter/event/"+selectdept+"/"+startDate+"/"+endDate).then((res) => {
+        
+      
+    });
+  }
 
   return (
     <div
@@ -45,8 +58,8 @@ function Filter(props)
                 <div className='flex flex-col '>
                     <div className=''><b>Department :</b></div>
                     <select className='pr-1' onChange={getDept}>
-                        { department.map((dept)=>(
-                            <option value={dept}>{dept}</option>
+                        { dept.map((dept)=>(
+                            <option value={dept.d_id}>{dept.name}</option>
                         ))}
                     </select>
                 </div>
@@ -54,7 +67,7 @@ function Filter(props)
                     <div className=''><b>Start Date :</b></div>
                     <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} />
                     <p className='p-2'></p>
-                    <button className='bg-black hover:bg-gray-900 text-white  py-1 px-4 w-[100px]  rounded-full'>Filter</button>
+                    <button className='bg-black hover:bg-gray-900 text-white  py-1 px-4 w-[100px]  rounded-full' onClick={filter}>Filter</button>
                 </div>
                 <div className='flex flex-col'>
                     <div className=''><b>End Date :</b></div>

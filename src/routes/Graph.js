@@ -1,6 +1,8 @@
 import React, { useEffect, useState , PureComponent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer , PieChart, Pie, Sector, Cell } from 'recharts';
 
+import axios from "axios";
+
 function Graph() 
 {
 
@@ -17,12 +19,18 @@ function Graph()
 
   const setDate = (e) => {
       setType(e.target.value)
+      axios.get("http://localhost:5000/graph/"+type).then((res) => {
+      setData(res.data);
+    })
   };
 
   const selectGraph = (e) => {
-    if (e.target.value == 'line'){
+    if (e.target.value == 1){
       setGraph(1);
-      setType(0);
+      setType('yearly');
+      axios.get("http://localhost:5000/graph/"+type).then((res) => {
+      setData(res.data);
+    })
       document.getElementById('yearly').checked = true;
     }  
     else {
@@ -31,8 +39,17 @@ function Graph()
   }
 
   useEffect(() => {
-    setDept(department);
-    setData(deptdata);
+    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+      setDept(res.data);
+    });
+   
+    axios.get("http://localhost:5000/graph/"+type).then((res) => {
+      setData(res.data);
+    })  
+   
+    console.log(graph);
+    console.log(data);
+    
   })
 
   const COLORS=['#0088FE','#00C49F','#FFBB28','#FF8042','#FF42A6','#BA42FF','#42F6FF','#FF5342','#FFFF50','#92FF50',    '#FF5050','#FF5050','#122771','#127154','#410D59','#217E42','#737F3A','#FFD15F','#F86200','#E49797'];
@@ -57,17 +74,17 @@ function Graph()
 
       <div className='w-full flex justify-between font-semibold px-80'>
         <div className='flex '>
-          <input id='yearly' onClick={setDate} type="radio" value={0} name="date"/>
+          <input id='yearly' onClick={setDate} type="radio" value='yearly' name="date"/>
           <div className='px-1'>Yearly</div>
           <p className='p-2'></p>
-          <input disabled={graph ? true : false} type="radio" onClick={setDate} value={1} name="date"/> <div className='px-1'>Montly</div>
+          <input disabled={graph ? true : false} type="radio" onClick={setDate} value='montly' name="date"/> <div className='px-1'>Montly</div>
         </div>
 
         <div className='flex '>
-          <input onClick={selectGraph} type="radio" value="bar" name="graph"/>
+          <input onClick={selectGraph} type="radio" value={0} name="graph"/>
           <div className='px-1'>Bar</div>
           <p className='p-2'></p>
-          <input type="radio" onClick={selectGraph} value="line" name="graph"/> <div className='px-1'>Line</div>
+          <input type="radio" onClick={selectGraph} value={1} name="graph"/> <div className='px-1'>Pie</div>
         </div>
       </div>
 
@@ -78,27 +95,29 @@ function Graph()
             data ?
 
             graph ? 
-            
+           
           <ResponsiveContainer width="100%" height="100%">
-          <PieChart width={400} height={400}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={false}
-              data={data}
-              cx="50%"
-              cy="50%"
-              outerRadius={125}
-              fill="#8884d8"
-              label
-              
-            >
-              {data && data.map((entry, index) => (
-                <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
+            <PieChart width={400} height={400}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={false}
+                data={data}
+                cx="50%"
+                cy="50%"
+                outerRadius={125}
+                fill="#8884d8"
+                label
+                
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
            </ResponsiveContainer>
+            
+          
             
             : <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -124,7 +143,7 @@ function Graph()
 
             : 
 
-            <div></div>
+            <div className='bg-white'>hey there</div>
           }
           </div>
       </div>

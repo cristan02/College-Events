@@ -10,11 +10,12 @@ select * from subeventtalk;
 
 /* home page */
 	/* to get 10 events */ 
-		select e_id , ename , photo1 , d_id from mevent order by startdate limit 10;
+		select e_id,ename,startdate,photo1,mevent.d_id,name from mevent left join department on department.d_id = mevent.d_id order by startdate limit 10;
 	/* to get 10 workshops */ 
-		select w_id , category , photo1 , f_id from workshop order by wdate limit 10;
+		select w_id , category, wdate ,des,photo1,photo2,name,fname,lname from workshop ,faculty,department
+        where department.d_id = faculty.d_id and faculty.f_id = workshop.f_id order by wdate limit 10;
 	/* to get all departmental non event activity */ 
-		select ste_id , stename , photo1 from subeventtalk where e_id is null order by stedate  limit 10;
+		select stename ,stedate , ste_id , credits,stedes,photo1,photo2,department.d_id,e_id ,name from subeventtalk , department where department.d_id = subeventtalk.d_id and e_id is null order by stedate  limit 10;
 	
     /* to get all subevents of an event */
 		select stename , stedate , credits , stedes , photo1 from subeventtalk where e_id =1;

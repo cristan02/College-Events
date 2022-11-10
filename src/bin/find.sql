@@ -1,0 +1,1 @@
+select name from department where d_id =1;

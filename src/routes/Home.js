@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 
+import axios from "axios";
+
 import SubEvent from './Home/SubEvent'
 
 function Home() {
@@ -17,7 +19,8 @@ function Home() {
         id:event.e_id ,
         ename:event.ename ,
         startdate:event.startdate , 
-        d_id:event.d_id      
+        d_id:event.d_id ,
+        name:event.name    
       }});
   }
 
@@ -27,11 +30,11 @@ function Home() {
         id:event.e_id ,
         title:event.category ,
         host_label:"Attended By",
-        host:event.f_id,
+        host:event.fname + " " + event.lname,
         date_label:"Held On",
         date:event.wdate , 
         about_label:"Department",
-        about:event.d_id,
+        about:event.name,
         desc_label:"Description",
         desc:event.des,
         photo1:event.photo1,
@@ -45,7 +48,7 @@ function Home() {
         id:event.ste_id ,
         title:event.stename ,
         host_label:"By Department",
-        host:event.d_id,
+        host: event.name ,
         date_label:"Held On",
         date:event.stedate , 
         about_label:"Credits",
@@ -58,9 +61,16 @@ function Home() {
   }
 
   useEffect(() => {
-    setEvents(mevent);
-    setWorkshops(workshop);
-    setActivity(subeventtalk);
+    axios.get("http://localhost:5000/home/event").then((res) => {
+      setEvents(res.data);
+    });
+    axios.get("http://localhost:5000/home/workshop").then((res) => {
+      setWorkshops(res.data);
+    });
+    axios.get("http://localhost:5000/home/subevent").then((res) => {
+      setActivity(res.data);
+    });
+    
   })
 
   return(
@@ -74,7 +84,7 @@ function Home() {
                   <p className='p-1'></p>
                   <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
                   {
-                    mevent.map((event , index) => (
+                    events.map((event , index) => (
                         <div id={index} className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] gap-2 relative' onClick = {()=>{
                           getMainEvent(event)
                         }}>
@@ -110,7 +120,7 @@ function Home() {
               <p className='p-1'></p>
               <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
               {
-                    subeventtalk.map((activity , index) => (
+                    activity.map((activity , index) => (
                         <div id={index} className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] gap-2 relative' onClick = {()=>{
                           getActivity(activity)
                         }}>
@@ -129,93 +139,3 @@ function Home() {
 
 export default Home;
 
-
-
-    const mevent =  [  
-        {   e_id : 1 ,
-            ename :  "TechFeast" ,
-            startdate : "2022-08-10" ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 1 } ,
-        {   e_id : 2 ,
-            ename :  "IRIX" ,
-            startdate : "2022-06-20" ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 1 } ,
-        {   e_id : 3 ,
-            ename :  "Tatastu" ,
-            startdate : "2022-06-20" ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 1 } ];
-    
-    const subeventtalk =  [  
-        {   ste_id : 1 ,
-            stename : "FIFA" ,
-            stedate : "2022-08-10" ,
-            credits : 5 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : null  ,
-            e_id : 1 } ,
-        {   ste_id : 2 ,
-            stename : "Blind Coder" ,
-            stedate : "2022-08-10" ,
-            credits : 2 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : null  ,
-            e_id : 1 } ,
-        {   ste_id : 3 ,
-            stename : "Time Management" ,
-            stedate : "2022-08-10" ,
-            credits : 2 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 1  ,
-            e_id : null } ,
-        {   ste_id : 4 ,
-            stename : "Photography" ,
-            stedate : "2022-08-10" ,
-            credits : 2 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 1  ,
-            e_id : 5 } ,
-        {   ste_id : null ,
-            stename : "Painting" ,
-            stedate : "2022-08-10" ,
-            credits : 5 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 2  ,
-            e_id : null } ,
-        {   ste_id : 6 ,
-            stename : "Futsal" ,
-            stedate : "2022-08-10" ,
-            credits : 2 ,
-            stedes : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." ,
-            photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-            d_id : 2  ,
-            e_id : null } ];
-
-const workshop =  [  
-    {   w_id : 1 ,
-        category : "Web Development" ,
-        wdate : "2022-08-10" , 
-        des : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." , 
-        photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" , 
-        photo2 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" , 
-        f_id : 1 } ,
-    {   w_id : 2 ,
-        category : "AI" ,
-        wdate : "2022-08-10" , 
-        des : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." , 
-        photo1 : "https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" , 
-        photo2 :"https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true" ,
-        f_id : 2 } ];
