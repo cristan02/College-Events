@@ -5,33 +5,15 @@ import axios from "axios";
 
 function Graph() 
 {
+  const [data , setData] = useState()
 
-  const [selectdept , setSelectDept] = useState([]);
-  const [dept , setDept] = useState([]);
-  const getDept = (e) => {
-    setSelectDept(e.target.value);
-  };
-
-  const [data , setData] = useState();
-
-  const [type , setType] = useState('yearly');
-  const [graph , setGraph] = useState(0);
-
-  const setDate = (e) => {
-      setType(e.target.value)
-      axios.get("http://localhost:5000/graph/"+type).then((res) => {
-      setData(res.data);
-    })
-  };
+  const [type , setType] = useState('yearly')
+  const [graph , setGraph] = useState(0)
 
   const selectGraph = (e) => {
     if (e.target.value == 1){
       setGraph(1);
-      setType('yearly');
-      axios.get("http://localhost:5000/graph/"+type).then((res) => {
-      setData(res.data);
-    })
-      document.getElementById('yearly').checked = true;
+      // setType('yearly');
     }  
     else {
       setGraph(0);
@@ -39,27 +21,44 @@ function Graph()
   }
 
   useEffect(() => {
-    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
-      setDept(res.data);
-    });
-   
-    axios.get("http://localhost:5000/graph/"+type).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    })  
-   
-    console.log(graph);
-    console.log(data);
-    
+    getData()
+  },[type])
+
+  useEffect(() => {    
+    getData()
   },[])
 
-  const COLORS=['#0088FE','#00C49F','#FFBB28','#FF8042','#FF42A6','#BA42FF','#42F6FF','#FF5342','#FFFF50','#92FF50',    '#FF5050','#FF5050','#122771','#127154','#410D59','#217E42','#737F3A','#FFD15F','#F86200','#E49797'];
+
+  const getData = () => {
+    let tempdata = []
+    axios.get("http://localhost:5000/graph/"+type).then((res) => {
+      res.data.forEach((data) => {
+        tempdata.push({
+          name : data.name,
+          d_initials : data.d_initials,
+          value : parseInt(data.value)
+        })
+      })
+      setData(tempdata)
+    }) 
+  }
+
+
+  const COLORS = ['#0088FE','#00C49F','#FFBB28','#FF8042','#FF42A6','#BA42FF','#42F6FF','#FF5342','#FFFF50','#92FF50',    '#FF5050','#FF5050','#122771','#127154','#410D59','#217E42','#737F3A','#FFD15F','#F86200','#E49797']
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
   };
+  
+
   return (
     <div
       className="w-full  text-md text-gray-800 flex flex-col max-w-full
@@ -75,17 +74,16 @@ function Graph()
 
       <div className='w-full flex justify-between font-semibold px-80'>
         <div className='flex '>
-          <input id='yearly' onClick={setDate} type="radio" value='yearly' name="date"/>
+          <input id='yearly' onClick={(e)=>{setType(e.target.value)}} type="radio" value='yearly' name="date" checked={type === 'yearly' ? true : false}/>
           <div className='px-1'>Yearly</div>
           <p className='p-2'></p>
-          <input disabled={graph ? true : false} type="radio" onClick={setDate} value='montly' name="date"/> <div className='px-1'>Montly</div>
+          <input  type="radio" onClick={(e)=>{setType(e.target.value)}} value='montly' name="date" checked={type === 'montly' ? true : false}/> <div className='px-1'>Montly</div>
         </div>
 
         <div className='flex '>
-          <input onClick={selectGraph} type="radio" value={0} name="graph"/>
-          <div className='px-1'>Bar</div>
+          <input onClick={selectGraph} type="radio" value={0} name="graph" checked={graph ? false : true}/><div className='px-1'>Bar</div>
           <p className='p-2'></p>
-          <input type="radio" onClick={selectGraph} value={1} name="graph"/> <div className='px-1'>Pie</div>
+          <input type="radio" onClick={selectGraph} value={1} name="graph" checked={graph ? true : false}/><div className='px-1'>Pie</div>
         </div>
       </div>
 
@@ -96,28 +94,26 @@ function Graph()
             data ?
 
             graph ? 
-           
-          <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%">
             <PieChart width={400} height={400}>
               <Pie
+                data={data}
                 dataKey="value"
-                isAnimationActive={false}
-                data={deptdata}
                 cx="50%"
                 cy="50%"
-                outerRadius={125}
+                labelLine={false}
+                label={renderCustomizedLabel}
+                outerRadius={130}
                 fill="#8884d8"
-                label
-                
+                isAnimationActive={true}
               >
-                {deptdata.map((entry, index) => (
-                  <Cell key={`cell-${index}`}  fill={COLORS[index % COLORS.length]} />
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip />
             </PieChart>
-           </ResponsiveContainer>
-            
+          </ResponsiveContainer>  
           
             
             : <ResponsiveContainer width="100%" height="100%">
@@ -133,8 +129,8 @@ function Graph()
               }}
               barSize={20}
             >
-              <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
-              <YAxis />
+              <XAxis dataKey="d_initials" scale="point" padding={{ left: 10, right: 10 }} />
+              <YAxis/>
               <Tooltip />
               <Legend />
               <CartesianGrid strokeDasharray="3 3" />
@@ -163,9 +159,32 @@ const backgroundColor = ["green","red","yellow","pink","brown","orange","cyan","
 
 
 const deptdata = [
-  {name: 'CS', value : 3}, 
-  {name: 'Chemistry', value : 2}, 
-  {name: 'English', value : 5}, 
-  {name: 'Bio chem', value : 8}, 
-  {name: 'Psycology', value : 9}, 
-]
+  {
+  "value": 16,
+  "name": "Computer Science"
+  },
+  {
+  "value": 6,
+  "name": "Chemistry"
+  },
+  {
+  "value": 16,
+  "name": "Botany"
+  },
+  {
+  "value": 1,
+  "name": "Sociology"
+  },
+  {
+  "value": 9,
+  "name": "Psychology"
+  },
+  {
+  "value": 1,
+  "name": "French"
+  },
+  {
+  "value": 1,
+  "name": "History"
+  }
+  ]

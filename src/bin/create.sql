@@ -2,11 +2,13 @@ create database college;
 
 use college;
 
-create table department(
-	d_id int auto_increment unique,
-    name varchar(20) not null,
-    primary key (d_id)
+CREATE TABLE department (
+  d_id int NOT NULL AUTO_INCREMENT,
+  name varchar(20) NOT NULL,
+  d_initials varchar(10) NOT NULL,
+  PRIMARY KEY (d_id)
 );
+
 
 create table student(
 	s_id  int auto_increment unique,

@@ -2,6 +2,8 @@ use college;
 
 select * from department;
 select * from student;
+
+
 select * from faculty;
 select * from workshop;
 select * from credits;
@@ -26,6 +28,10 @@ select * from subeventtalk;
 /* events page */
 	/* getting unique department name */
 		select distinct(name) as d_name from department;
+	/*  getting unique events */
+		select distinct(ename) , e_id from mevent where year(startdate) = year(now()) order by startdate desc;
+	/*  getting unique faculty */
+		select f_id , fname from faculty;
 	
     /* filter query */
 		/* main events and their sub events */

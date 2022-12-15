@@ -3,74 +3,77 @@ import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
 function Workshop() {
-//   const [title, setTitle] = useState("");
-//   const [date, setDate] = useState("");
-//   const [des, setDes] = useState("");
-//   const [photo1, setPhoto1] = useState("");
-//   const [photo2, setPhoto2] = useState("");
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [des, setDes] = useState("");
+  const [photo1, setPhoto1] = useState("");
+  const [photo2, setPhoto2] = useState("");
+  const [tchr, setTchr] = useState("");
 
-//   const [faculty, setFaculty] = useState([]);
 
-//   const formRef = useRef();
+  const [faculty, setFaculty] = useState([]);
 
-//   useEffect(() => {
-//     const faculty_options = [{ value: "", text: "--Choose an option--" }];
+  const formRef = useRef();
 
-//     axios.get("http://localhost:").then((res) => {
-//       res.data.forEach((faculty) => {
-//         faculty_options.push({
-//           value: faculty._id,
-//           text: `${faculty.fname} ${faculty.lname}`,
-//         });
-//       });
-//       setFaculty(faculty_options);
-//     });
-//   }, []);
+  useEffect(() => {
+    const faculty_options = [{ value: "", text: "--Choose an option--" }];
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     switch (name) {
-//       case "Title":
-//         setTitle(value);
-//         break;
-//       case "Date":
-//         setDate(formatDate(value));
-//         break;
-//       case "Des":
-//         setDes(value);
-//         break;
-//       case "Faculty":
-//         setFaculty(value);
-//         break;
-//       case "Photo1":
-//         setPhoto1(value);
-//         break;
-//         case "Photo2":
-//         setPhoto2(value);
-//         break;
-//       default:
-//         break;
-//     }
-//   };
+    axios.get("http://localhost:5000/faculty").then((res) => {
+      res.data.forEach((faculty) => {
+        faculty_options.push({
+          value: faculty.f_id,
+          text: `${faculty.fname} ${faculty.lname}`,
+        });
+      });
+      setFaculty(faculty_options);
+    });
+  }, []);
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "Title":
+        setTitle(value);
+        break;
+      case "Date":
+        setDate(value);
+        break;
+      case "Des":
+        setDes(value);
+        break;
+      case "Faculty":
+        setTchr(value);
+        break;
+      case "Photo1":
+        setPhoto1(value);
+        break;
+        case "Photo2":
+        setPhoto2(value);
+        break;
+      default:
+        break;
+    }
+  };
 
-//     axios
-//       .post("", {
-//         title,
-//         date,
-//         des,
-//         faculty_id,
-//         photo1,
-//         photo2,
-//       })
-//       .then((res) => {
-//         alert("Workshop created successfully");
-//       });
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-//     formRef.current.reset();
-//   };
+    console.log(title ,date,des,tchr,photo1,photo2 );
+    axios
+      .post("http://localhost:5000/post/workshop", {
+        category :  title ,
+        wdate : date, 
+        des : des,
+        photo1 : photo1 ,
+        photo2 : photo2,
+        f_id : tchr ,
+      })
+      .then((res) => {
+        alert("Activity created successfully");
+      });
+
+    formRef.current.reset();
+  };
   return (
     <div
     className="w-full  text-md text-gray-800 flex flex-col max-w-full
@@ -79,8 +82,7 @@ function Workshop() {
     <div className="flex flex-col text-[30px] justify-center items-center p-4">
       Create a New Workshop
       <p className="p-2"></p>
-      <form  className="w-1/2">
-      {/* ref={formRef} onSubmit={handleSubmit} */}
+      <form  className="w-1/2" ref={formRef} onSubmit={handleSubmit}>
         <div className="overflow-hidden shadow-xl shadow-blue-200 sm:rounded-md">
           <div className="bg-white px-4 py-5 sm:p-6">
             <div className="grid grid-cols-6 gap-6">
@@ -92,7 +94,7 @@ function Workshop() {
                   Title
                 </label>
                 <input
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   id="Title"
                   name="Title"
@@ -108,7 +110,7 @@ function Workshop() {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="date"
                   name="Date"
                   id="date"
@@ -123,15 +125,15 @@ function Workshop() {
                   Faculty
                 </label>
                 <select
-                //   onChange={handleChange}
+                onChange={handleChange}
                   id="faculty"
                   name="Faculty"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {faculty.map((faculty, id) => (
+                  {faculty.map((faculty, id) => (
                     <option key={id} value={faculty.value}>
                       {faculty.text}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </div>
 
@@ -141,9 +143,9 @@ function Workshop() {
                   className="block text-sm font-medium text-gray-700">
                   Description
                 </label>
-                <input
+                <textarea
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Des"
                   id="des"
@@ -159,7 +161,7 @@ function Workshop() {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Photo1"
                   id="photo1"
@@ -174,7 +176,7 @@ function Workshop() {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Photo2"
                   id="photo2"

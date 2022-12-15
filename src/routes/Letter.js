@@ -2,60 +2,129 @@ import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
-// var htmlToImage = require('html-to-image');
-// import ReactToPrint from 'react-to-print';
 import { useReactToPrint } from 'react-to-print';
 
-
+import axios from 'axios'
 
 function Letter() 
 {
+  const currdate = new Date();
+  const [selectdept , setSelectDept] = useState(0);
+  const [selectdeptname , setSelectDeptName] = useState("College");
+  const [selectmonth , setSelectMonth] = useState(currdate.getMonth());
+  const [selectyear , setSelectYear] = useState(currdate.getFullYear() );
 
-  const [selectdept , setSelectDept] = useState("College");
-  const [selectmonth , setSelectMonth] = useState(8);
-  const [selectyear , setSelectYear] = useState(2022);
-
-  const [dept , setDept] = useState([]);
+  const [dept, setDept] = useState(["Loading..."])
   const [month , setMonth] = useState([]);
   const [year , setYear] = useState([]);
 
   const [activity , setActivity] = useState([]);
   const [workshop , setWorkshop] = useState([])
   const [event , setEvent] = useState([]);
-  const [subevent , setSubEvent] = useState([]);
-
-
-
 
   useEffect(() => {
-    setDept(department);
-    setMonth(months);
-    setYear(years);
-    setActivity(act);
-    setWorkshop(work);
-    setEvent(events);
-  })
+    setMonth(months)
+    refresh()
+  },[])
 
-  const getDept = (e) => {
-    setSelectDept(e.target.value);
-  };
-  const getYear = (e) => {
-    setSelectYear(e.target.value);
-  };
-  const getMonth = (e) => {
-    setSelectMonth(e.target.value);
-  };
+  useEffect(() => {
+    refresh()
+  }, [selectdept,selectmonth,selectyear])
 
+  const refresh = () => {
+    axios.get('http://localhost:5000/event/filter/departments').then((res) => {
+      const temp = [{ d_id: 0, name: 'College' }]
+      res.data.forEach((dept) => {
+        temp.push({
+          d_id: dept.d_id,
+          name: dept.name,
+        })
+      });
+      setDept(temp)
+    })
+
+    axios.get('http://localhost:5000/years').then((res) => {
+      const temp = []
+      res.data.forEach((yr)=>{
+        temp.push(yr.year)
+      })
+      setYear(temp)
+    })
+
+    if(selectdept == 0)
+    {
+      if(selectmonth == 0)
+      {
+        axios.get('http://localhost:5000/letter/event/' +  selectyear)
+        .then((res) => {setEvent(res.data)})
+    
+        axios.get('http://localhost:5000/letter/workshop/'+  selectyear )
+        .then((res) => {setWorkshop(res.data)})
+
+        axios.get('http://localhost:5000/letter/activity/' +  selectyear )
+        .then((res) => {setActivity(res.data)})
+
+    
+      }
+      else
+      {
+        axios.get('http://localhost:5000/letter/eventcollege/' +  selectyear + '/' + selectmonth  )
+        .then((res) => {setEvent(res.data)})
+    
+        axios.get('http://localhost:5000/letter/workshopcollege/' +  selectyear + '/' + selectmonth )
+        .then((res) => {setWorkshop(res.data)})
+
+        axios.get('http://localhost:5000/letter/activitycollege/' +   selectyear + '/' + selectmonth )
+        .then((res) => {setActivity(res.data)})
+
+       
+      }}
+    else{
+        if(selectmonth == 0)
+        {
+          axios.get('http://localhost:5000/letter/event/' + selectdept + '/' + selectyear   )
+        .then((res) => {setEvent(res.data)})
+    
+        axios.get('http://localhost:5000/letter/workshop/' + selectdept + '/' + selectyear )
+        .then((res) => {setWorkshop(res.data)})
+
+        axios.get('http://localhost:5000/letter/activity/' + selectdept + '/' + selectyear )
+        .then((res) => {setActivity(res.data)})
+
+        
+        }
+        else{
+          axios.get('http://localhost:5000/letter/event/' + selectdept + '/' + selectyear + '/' + selectmonth  )
+        .then((res) => {setEvent(res.data)})
+    
+        axios.get('http://localhost:5000/letter/workshop/' + selectdept + '/' + selectyear + '/' + selectmonth )
+        .then((res) => {setWorkshop(res.data)})
+
+        axios.get('http://localhost:5000/letter/activity/' + selectdept + '/' + selectyear + '/' + selectmonth )
+        .then((res) => {setActivity(res.data)})
+
+        }
+      }
+    }
+    
+
+  const handleDeptChange = (e) => {
+    setSelectDept(e.target.value)
+    dept.forEach((dept) => {
+      if(dept.d_id == e.target.value)
+        setSelectDeptName(dept.name)
+    })
+    
+  }
 
 
   const printDiv = useRef();
   const handlePrint = useReactToPrint({
       content: () => printDiv.current,
-    });
-    
+  });
 
+  
+  
   return (
     <div
       className="text-md text-gray-800 flex flex-col max-w-full
@@ -65,17 +134,17 @@ function Letter()
 
           <div className='flex justify-center text-xl p-2'>
             <div className=''><b>Departmental Letter for : </b></div>
-              <select className='pr-1' onChange={getDept}>
-                { department.map((dept)=>(
-                  <option value={dept}>{dept}</option>
-                ))}
-              </select>
+            <select value={selectdept} name={selectdeptname} onChange={handleDeptChange} className="flex items-center justify-center rounded-md bg-white py-1 px-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+              {dept.map((dept) => (
+                <option id={dept.name} name={dept.name}  value={dept.d_id}>{dept.name}</option>
+              ))}
+            </select>
           </div>
           <div className='flex justify-center '>
             <div className=''>
               <b>Year :</b>
-              <select className='pr-1' onChange={getYear}>
-                  {year.map((yr)=>(
+              <select className='pr-1' onChange={(e)=>{setSelectYear(e.target.value)}} value={selectyear}>
+                  {year && year.map((yr)=>(
                     <option value={yr}>{yr}</option>
                   ))}
               </select>
@@ -83,14 +152,14 @@ function Letter()
             <p className='px-4'></p>
             <div className=''>
               <b>Month :</b>
-                <select className='pr-1' onChange={getMonth}>
+                <select className='pr-1' onChange={(e)=>{setSelectMonth(e.target.value)}} value={selectmonth}>
                 { month.map((mnt)=>(
                   <option value={mnt.index}>{mnt.month}</option>
                 ))}
                 </select>
             </div>
             <p className='px-4'></p>
-            <button  className='bg-blue-700 hover:bg-blue-900 text-white  py-1 px-4 rounded-full'>
+            <button onClick={refresh} className='bg-blue-700 hover:bg-blue-900 text-white  py-1 px-4 rounded-full'>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className='w-4 h-4 fill-white'><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
             </button>
             <p className='px-2'></p>
@@ -103,7 +172,7 @@ function Letter()
 
         <div ref={printDiv}>
           <div className='flex flex-col w-[1000px] border py-6 px-8' >
-              <div className='w-full flex  justify-center text-xl'><h1 className='text-lg font-bold'>{selectdept}</h1></div>
+              <div className='w-full flex  justify-center text-xl'><h1 className='text-lg font-bold'>{selectdeptname}</h1></div>
 
               <p className='p-4'></p>
               <h1 className='text-md font-bold'>Events : </h1>
@@ -111,7 +180,7 @@ function Letter()
 
               <div className='flex flex-col'>
                 {
-                  event.map((event) => (
+                  event && event.map((event) => (
                     <div className='py-2'>
                       <h1 className="text-xl font-extrabold font-serif flex w-full justify-center">
                           {event.name}
@@ -138,9 +207,9 @@ function Letter()
                           </thead>
                         <tbody>
                         {
-                          event.subevent.map((sub,index) => (
+                          event.subevents && event.subevents.map((sub,index) => (
                             <tr className=''>
-                              <td className='border border-slate-600 w-[300px] text-center'>{index}</td>
+                              <td className='border border-slate-600 w-[300px] text-center'>{index+1}</td>
                               <td className='border border-slate-600 w-[300px] text-center'>{sub.name}</td>
                               <td className='border border-slate-600 w-[300px] text-center'>{sub.credits}</td>
                             </tr>
@@ -162,7 +231,7 @@ function Letter()
 
               <div className='flex flex-col'>
               {
-                  workshop.map((event) => (
+                  workshop && workshop.map((event) => (
                     <div className='py-2'>
                       <h1 className="text-xl font-extrabold font-serif flex w-full justify-center">
                           {event.category}
@@ -201,7 +270,7 @@ function Letter()
 
               <div className='flex flex-col'>
               {
-                  activity.map((event) => (
+                  activity && activity.map((event) => (
                     <div className='py-2'>
                       <h1 className="text-xl font-extrabold font-serif flex w-full justify-center">
                           {event.name}
@@ -246,6 +315,10 @@ const department = [
 ]
 
 const months = [
+  {
+    month : "All",
+    index : 0
+  },
   {
     month : "January",
     index : 1

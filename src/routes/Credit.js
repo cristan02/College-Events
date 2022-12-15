@@ -73,20 +73,22 @@ function Credit() {
       </div>
 
       <div className="flex">
-        <div className="w-[100px] p-2 font-semibold text-lg">Roll No.</div>
+        <div className="w-[100px] p-2 font-bold text-md text-gray-800">Roll No.</div>
         <p className="px-1"></p>
-        <div className="w-[440px]  p-2 font-semibold text-lg">Full Name</div>
+        <div className="w-[440px]  p-2 font-bold text-md text-gray-800">Full Name</div>
         <p className="px-1"></p>
-        <div className="w-[130px]  p-2 font-semibold text-lg">Year Joined</div>
+        <div className="w-[130px]  p-2 font-bold text-md text-gray-800">Year Joined</div>
         <p className="px-1"></p>
-        <div className="w-[130px]  p-2 font-semibold text-lg">Credit Hours</div>
+        <div className="w-[130px]  p-2 font-bold text-md text-gray-800">Credit Hours</div>
         <p className="px-1"></p>
       </div>
 
       <div className="flex flex-col">
+      <hr className=' w-full h-[1px] bg-gray-900'></hr>
         {credits &&
           credits.map((stud) => (
-            <div className="flex">
+            <div>
+              <div className="flex">
               <div className="w-[100px] px-2 py-1 flex justify-center">
                 {stud.roll_no}
               </div>
@@ -137,6 +139,9 @@ function Credit() {
                 </button>
               </div>
               <p className="px-1"></p>
+              
+            </div>
+            <hr className=' w-full h-[1px] bg-gray-900'></hr>
             </div>
           ))}
       </div>
@@ -167,12 +172,12 @@ function Credit() {
                     </svg>
                     <span className="sr-only">Close modal</span>
                   </button>
-                  <div className="p-6 text-center">
+                  <div className="p-6 text-left">
                     <div className="text-center">Update Student Details</div>
                     <div className="bg-white px-4 py-5 sm:p-6">
                       <div className="">
                         <form
-                          className="grid grid-cols-6 gap-6"
+                          className="grid grid-cols-3 gap-6"
                           onSubmit={handleUpdate}
                         >
                           <div className="col-span-6 sm:col-span-3">
@@ -211,7 +216,7 @@ function Credit() {
                             />
                           </div>
 
-                          <div className="w-full flex justify-center">
+                          <div className="w-full flex justify-center ">
                             <button className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                               Update
                             </button>

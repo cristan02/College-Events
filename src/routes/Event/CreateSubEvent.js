@@ -3,95 +3,83 @@ import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
 function Subevent() {
-//   const [title, setTitle] = useState("");
-//   const [date, setDate] = useState("");
-//   const [credits, setCredits] = useState();
-//   const [des, setDes] = useState("");
-  const [departments, setDepartments] = useState([]);
-  const [events, setEvents] = useState([]);
-//   const [photo1, setPhoto1] = useState("");
-//   const [photo2, setPhoto2] = useState("");
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [credits, setCredits] = useState("");
+  const [des, setDes] = useState("");
+  const [event, setEvent] = useState([]);
+  const [evnt, setEvnt] = useState("");
+  const [photo1, setPhoto1] = useState("");
+  const [photo2, setPhoto2] = useState("");
 
-//   const formRef = useRef();
+  const formRef = useRef();
 
 useEffect(() => {
-  // const department_options = [{ value: "", text: "--Choose an option--" }];
-  const event_options = [{ value: "", text: "--Choose an option--" }];
+  const event_options = [{ value: "", text: "-Choose Event-" }];
 
-  // axios.get("http://localhost:5000/event/filter/departments").then((res) => {
-  //   res.data.forEach((department) => {
-  //     department_options.push({
-  //       value: department.d_id,
-  //       text: department.name,
-  //     });
-  //   });
-  //   setDepartments(department_options);
-  // });
-
-  axios.get("http://localhost:").then((res) => {
+  axios.get("http://localhost:5000/event/filter/events").then((res) => {
     res.data.forEach((event) => {
       event_options.push({
-        value: event._id,
-        text: `${event.fname}`,
+        value: event.e_id,
+        text: event.ename,
       });
     });
-    setEvents(event_options);
+    setEvent(event_options);
   });
 }, []);
 
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     switch (name) {
-//       case "Title":
-//         setTitle(value);
-//         break;
-//       case "Date":
-//         setDate(formatDate(value));
-//         break;
-//       case "Credits":
-//         setCredits(value);
-//         break;
-//       case "Des":
-//         setDes(value);
-//         break;
-//       case "Department":
-//         setDepartment(value);
-//         break;
-//       case "Event":
-//         setEvent(value);
-//         break;
-//       case "Photo1":
-//         setPhoto1(value);
-//         break;
-//         case "Photo2":
-//         setPhoto2(value);
-//         break;
-//       default:
-//         break;
-//     }
-//   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "Title":
+        setTitle(value);
+        break;
+      case "Date":
+        setDate(value);
+        break;
+      case "Credits":
+        setCredits(value);
+        break;
+      case "Des":
+        setDes(value);
+        break;
+      case "Event":
+        setEvnt(value);
+        break;
+      case "Photo1":
+        setPhoto1(value);
+        break;
+        case "Photo2":
+        setPhoto2(value);
+        break;
+      default:
+        break;
+    }
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-//     axios
-//       .post("", {
-//         title,
-//         date,
-//         credits,
-//         des,
-//         department_id,
-//         event_id,
-//         photo1,
-//         photo2,
-//       })
-//       .then((res) => {
-//         alert("Subevent created successfully");
-//       });
+    console.log(title ,date,credits,des,evnt,photo1,photo2 );
+    axios
+      .post("http://localhost:5000/post/subevent", {
+        stename :  title ,
+        stedate : date, 
+        credits : credits,
+        stedes : des,
+        photo1 : photo1 ,
+        photo2 : photo2,
+        e_id : evnt ,
+      })
+      .then((res) => {
+        alert("Activity created successfully");
+      });
 
-//     formRef.current.reset();
-//   };
+
+    formRef.current.reset();
+  };
+
   return (
     <div
     className="w-full  text-md text-gray-800 flex flex-col max-w-full
@@ -100,8 +88,7 @@ useEffect(() => {
     <div className="flex flex-col text-[30px] justify-center items-center p-4">
       Create a New Subevent
       <p className="p-2"></p>
-      <form  className="w-1/2">
-      {/* ref={formRef} onSubmit={handleSubmit} */}
+      <form  className="w-1/2" ref={formRef} onSubmit={handleSubmit}>
         <div className="overflow-hidden shadow-xl shadow-blue-200 sm:rounded-md">
           <div className="bg-white px-4 py-5 sm:p-6">
             <div className="grid grid-cols-6 gap-6">
@@ -113,7 +100,7 @@ useEffect(() => {
                   Title
                 </label>
                 <input
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   id="Title"
                   name="Title"
@@ -129,7 +116,7 @@ useEffect(() => {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="date"
                   name="Date"
                   id="date"
@@ -145,7 +132,7 @@ useEffect(() => {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="number"
                   name="Credits"
                   id="credits"
@@ -153,24 +140,24 @@ useEffect(() => {
                 />
               </div>
               
-              {/* <div className="col-span-6 sm:col-span-3">
+              <div className="col-span-6 sm:col-span-3">
                 <label
-                  htmlFor="department"
+                  htmlFor="event"
                   className="block text-sm font-medium text-gray-700">
-                  Department
+                  Event
                 </label>
                 <select
-                //   onChange={handleChange}
-                  id="department"
-                  name="Department"
+                  onChange={handleChange}
+                  id="event"
+                  name="Event"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {departments.map((department, id) => (
-                    <option key={id} value={department.value}>
-                      {department.text}
+                  {event.map((event, id) => (
+                    <option key={id} value={event.value}>
+                      {event.text}
                     </option>
                   ))}
                 </select>
-              </div> */}
+              </div>
 
               <div className="col-span-6 sm:col-span-6">
                 <label
@@ -178,9 +165,9 @@ useEffect(() => {
                   className="block text-sm font-medium text-gray-700">
                   Description
                 </label>
-                <input
+                <textarea
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Des"
                   id="des"
@@ -188,24 +175,6 @@ useEffect(() => {
                 />
               </div>
 
-              <div className="col-span-6 sm:col-span-6">
-                <label
-                  htmlFor="event"
-                  className="block text-sm font-medium text-gray-700">
-                  Event
-                </label>
-                <select
-                //   onChange={handleChange}
-                  id="event"
-                  name="Event"
-                  className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {/* {event.map((event, id) => (
-                    <option key={id} value={event.value}>
-                      {event.text}
-                    </option>
-                  ))} */}
-                </select>
-              </div>
               
               <div className="col-span-6 sm:col-span-3">
                 <label
@@ -215,7 +184,7 @@ useEffect(() => {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Photo1"
                   id="photo1"
@@ -230,7 +199,7 @@ useEffect(() => {
                 </label>
                 <input
                   required
-                //   onChange={handleChange}
+                onChange={handleChange}
                   type="text"
                   name="Photo2"
                   id="photo2"

@@ -22,6 +22,7 @@ insert into mevent values ( null , "IRIX" , "2022-08-10" , "Image link 1" , 1);
 insert into mevent values ( null , "TechFeast" , "2022-06-20" , "Image link 1" , 1);
 insert into mevent values ( null , "Tatastu" , "2022-06-20" , "Image link 1" , null);
 
+
 insert into subeventtalk values ( null , "FIFA" , "2022-08-10" , 5 , "event description" , "Image link 1" , "Image link 2" ,null  , 1);
 insert into subeventtalk values ( null , "Blind Coder" , "2022-08-10" , 2 , "event description" , "Image link 1" , "Image link 2", null  , 1);
 insert into subeventtalk values ( null , "Time Management" , "2022-08-10" , 2  , "talk description" , "Image link 1" , "Image link 2" , 1 ,null );

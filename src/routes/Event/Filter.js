@@ -5,34 +5,84 @@ import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 
 function Filter(props) {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
-  const [selectdept, setSelectDept] = useState('Computer Science')
+  var date = new Date();
+  const [startDate, setStartDate] = useState(date.getFullYear() + '-01-01')
+  const [endDate, setEndDate] = useState(date.getFullYear() + '-12-31')
+  const [selectdept, setSelectDept] = useState(0)
 
-  const [dept, setDept] = useState([{ d_id: null, name: 'All' }])
+  const [dept, setDept] = useState(["Loading..."])
   const [activity, setActivity] = useState([])
   const [workshop, setWorkshop] = useState([])
   const [event, setEvent] = useState([])
-  const [subevent, setSubEvent] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/event/filter/departments').then((res) => {
-      setDept(res.data)
-    })
+    filter()
+  },[])
 
-    setActivity(act)
-    setWorkshop(work)
-    setEvent(events)
-  })
+  useEffect(() => {
+    filter()
+  }, [selectdept])
 
-  const getDept = (e) => {
-    setSelectDept(e.target.value)
-  }
 
   const filter = () => {
-    axios
-      .get(
+    axios.get('http://localhost:5000/event/filter/departments').then((res) => {
+      const temp = [{ d_id: 0, name: 'All' }]
+      res.data.forEach((dept) => {
+        temp.push({
+          d_id: dept.d_id,
+          name: dept.name,
+        })
+      });
+      setDept(temp)
+    })
+
+    if(selectdept == 0)
+    {
+      axios.get(
         'http://localhost:5000/event/filter/event/' +
+          startDate +
+          '/' +
+          endDate
+      )
+      .then((res) => {
+        setEvent(res.data)
+      })
+  
+      axios.get(
+        'http://localhost:5000/event/filter/activity/' +
+          startDate +
+          '/' +
+          endDate,
+      )
+      .then((res) => {
+        setActivity(res.data)
+      })
+  
+      axios.get(
+        'http://localhost:5000/event/filter/workshop/' +
+          startDate +
+          '/' +
+          endDate,
+      )
+      .then((res) => {
+        setWorkshop(res.data)
+      })
+    }
+    else{
+      axios.get(
+        'http://localhost:5000/event/filter/event/' +
+          selectdept +
+          '/' +
+          startDate +
+          '/' +
+          endDate
+      )
+      .then((res) => {
+        setEvent(res.data)
+      })
+  
+      axios.get(
+        'http://localhost:5000/event/filter/activity/' +
           selectdept +
           '/' +
           startDate +
@@ -40,11 +90,11 @@ function Filter(props) {
           endDate,
       )
       .then((res) => {
-        setEvent(res.data)
+        setActivity(res.data)
       })
-    axios
-      .get(
-        'http://localhost:5000/event/filter/event/' +
+  
+      axios.get(
+        'http://localhost:5000/event/filter/workshop/' +
           selectdept +
           '/' +
           startDate +
@@ -52,20 +102,11 @@ function Filter(props) {
           endDate,
       )
       .then((res) => {
-        setEvent(res.data)
+        setWorkshop(res.data)
       })
-    axios
-      .get(
-        'http://localhost:5000/event/filter/event/' +
-          selectdept +
-          '/' +
-          startDate +
-          '/' +
-          endDate,
-      )
-      .then((res) => {
-        setEvent(res.data)
-      })
+    }
+
+    
   }
 
   return (
@@ -79,9 +120,9 @@ function Filter(props) {
             <div className="">
               <b>Department :</b>
             </div>
-            <select className="pr-1" onChange={getDept}>
+            <select value={selectdept} onChange={(e)=>{setSelectDept( e.target.value)}} className="block w-full rounded-md border-2 border-gray-300 bg-white py-1 px-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
               {dept.map((dept) => (
-                <option value={dept.d_id}>{dept.name}</option>
+                <option id={dept.d_id} value={dept.d_id}>{dept.name}</option>
               ))}
             </select>
           </div>
@@ -89,14 +130,19 @@ function Filter(props) {
             <div className="">
               <b>Start Date :</b>
             </div>
-            <DatePicker
-              selected={startDate}
-              onChange={(date: Date) => setStartDate(date)}
-            />
+            <input
+                  type="date"
+                  value={startDate}
+                  className="block w-full rounded-md border-2 border-gray-300 bg-white py-1 px-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                  onChange={(e)=>{
+                    setStartDate(e.target.value);
+                    filter();
+                  }}
+            />   
             <p className="p-2"></p>
             <button
-              className="bg-black hover:bg-gray-900 text-white  py-1 px-4 w-[100px]  rounded-full"
-              //   onClick={filter}
+              className="bg-black hover:bg-gray-900 text-white  py-1 px-4 w-[100px]  rounded-full "
+              onClick={filter}
             >
               Filter
             </button>
@@ -105,10 +151,15 @@ function Filter(props) {
             <div className="">
               <b>End Date :</b>
             </div>
-            <DatePicker
-              selected={endDate}
-              onChange={(date: Date) => setEndDate(date)}
-            />
+            <input
+                  type="date"
+                  value={endDate}
+                  className="block w-full rounded-md border-2 border-gray-300 bg-white py-1 px-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                  onChange={(e)=>{
+                    setEndDate(e.target.value);
+                    filter();
+                  }}
+            />   
           </div>
         </div>
       </div>
@@ -123,7 +174,7 @@ function Filter(props) {
 
           <p className="p-2"></p>
 
-          {event.map((event) => (
+          {event && event.map((event) => (
             <div className="flex py-1">
               <h1 className="text-lg font-bold w-[150px] p-2">{event.name} </h1>
               <img
@@ -131,21 +182,20 @@ function Filter(props) {
                 src={event.photo1}
               ></img>
 
-              <div className="flex flex-col">
-                {event.subevent.map((sub) => (
-                  <div className="flex gap-4  py-1 px-4 ">
-                    <div className="flex flex-col">
+              <div className="flex flex-col ">
+                {event.subevents && event.subevents.map((sub) => (
+                  <div className="flex gap-4  py-1 px-4 justify-between w-full">
+                    <div className="flex flex-col w-[300px]">
                       <div className="capitalize">
                         <b>Sub Event Name : </b>
                         {sub.name}
                       </div>
                       <div className="">
-                        <b>Sub Event Date : </b>
-                        {String(sub.date)}
+                        <b>Sub Event Credits : </b>
+                        {String(sub.credits)}
                       </div>
+                      
                     </div>
-
-                    <p className="p-2"></p>
 
                     <img
                       className="min-w-[50px] max-w-[50px] max-h-[50px] min-h-[50px] rounded-lg  justify-center items-end "
@@ -165,7 +215,7 @@ function Filter(props) {
 
           <p className="p-2"></p>
 
-          {workshop.map((event) => (
+          {workshop && workshop.map((event) => (
             <div className="flex py-1 ">
               <h1 className="text-lg font-bold w-[150px] p-2">
                 {event.category}
@@ -180,13 +230,14 @@ function Filter(props) {
                   <div className="flex gap-4  py-1 px-4 ">
                     <div className="flex flex-col">
                       <div className="capitalize">
-                        <b>Faculty FName : </b>
-                        {sub.fname}
+                        <b>Attended By : </b>
+                        {sub.fname + "  " + sub.lname}
                       </div>
                       <div className="">
-                        <b>Faculty FName : </b>
-                        {String(sub.lname)}
+                        <b>Designation : </b>
+                        {sub.designation}
                       </div>
+                      
                     </div>
                   </div>
                 ))}
@@ -202,7 +253,7 @@ function Filter(props) {
 
           <p className="p-2"></p>
 
-          {activity.map((event) => (
+          {activity && activity.map((event) => (
             <div className="flex py-1">
               <h1 className="text-lg font-bold w-[150px] p-2">
                 {event.name} :{' '}
@@ -215,12 +266,16 @@ function Filter(props) {
               <div className="flex gap-4  py-2 px-4 ">
                 <div className="flex flex-col">
                   <div className="capitalize">
-                    <b>Activity Date : </b>
+                    <b>Held on : </b>
                     {String(event.date)}
                   </div>
                   <div className="">
-                    <b>Activity Credits : </b>
+                    <b>Credits : </b>
                     {event.credits}
+                  </div>
+                  <div className="">
+                    <b>Department : </b>
+                    {event.department}
                   </div>
                 </div>
 
