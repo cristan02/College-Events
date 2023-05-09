@@ -107,7 +107,7 @@ function Graph(props)
                 fill="#8884d8"
                 isAnimationActive={true}
               >
-                {data.map((entry, index) => (
+                {data && data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>

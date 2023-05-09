@@ -135,7 +135,7 @@ function Letter(props)
         <div className='flex justify-center text-xl p-2'>
             <div className=''><b>Departmental Letter for : </b></div>
             <select value={selectdept} name={selectdeptname} onChange={handleDeptChange} className="flex items-center justify-center rounded-md bg-white py-1 px-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-              {dept.map((dept) => (
+              {dept&&dept.map((dept) => (
                 <option id={dept.name} name={dept.name}  value={dept.d_id}>{dept.name}</option>
               ))}
             </select>
@@ -154,7 +154,7 @@ function Letter(props)
             <div className=''>
               <b>Month :</b>
                 <select className='pr-1' onChange={(e)=>{setSelectMonth(e.target.value)}} value={selectmonth}>
-                { month.map((mnt)=>(
+                {month &&  month.map((mnt)=>(
                   <option value={mnt.index}>{mnt.month}</option>
                 ))}
                 </select>

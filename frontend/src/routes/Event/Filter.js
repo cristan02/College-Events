@@ -121,7 +121,7 @@ function Filter(props) {
               <b>Department :</b>
             </div>
             <select value={selectdept} onChange={(e)=>{setSelectDept( e.target.value)}} className="block w-full rounded-md border-2 border-gray-300 bg-white py-1 px-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-              {dept.map((dept) => (
+              {dept && dept.map((dept) => (
                 <option id={dept.d_id} value={dept.d_id}>{dept.name}</option>
               ))}
             </select>
@@ -226,7 +226,7 @@ function Filter(props) {
               ></img>
 
               <div className="flex flex-col">
-                {event.faculty.map((sub) => (
+                {event && event.faculty.map((sub) => (
                   <div className="flex gap-4  py-1 px-4 ">
                     <div className="flex flex-col">
                       <div className="capitalize">

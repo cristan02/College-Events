@@ -128,7 +128,7 @@ function Workshop(props) {
                   id="faculty"
                   name="Faculty"
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                  {faculty.map((faculty, id) => (
+                  {faculty && faculty.map((faculty, id) => (
                     <option key={id} value={faculty.value}>
                       {faculty.text}
                     </option>
