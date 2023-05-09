@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 function AddSingle() {
 
-    const [studId , setStudId] = useState();
+    const [studDet , setStudDet] = useState();
     const [eventName , setEventName] = useState();
 
     const [activestudId , setActiveStudId] = useState();
@@ -31,7 +31,7 @@ function AddSingle() {
 
     useEffect(() => {
         axios.get("http://localhost:5000/get/rollno").then((res) => {
-          setStudId(res.data);
+          setStudDet(res.data);
         });
         axios.get("http://localhost:5000/get/activities").then((res) => {
           setEventName(res.data);
@@ -70,8 +70,8 @@ function AddSingle() {
                   className="mt-1 block w-full rounded-md border-2 border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">   
                   <option value="none" selected></option>
                   {
-                    studId && studId.map((id)=>(
-                        <option value={id.sid}>{id.sid}</option>
+                    studDet && studDet.map((id)=>(
+                        <option value={id.sid}>{id.sid  + ' - '+ id.fname  + ' ' + id.lname}</option>
                     ))
                   }
                 </select>

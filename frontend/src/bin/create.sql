@@ -52,7 +52,7 @@ create table credits(
     foreign key (ste_id) references subeventtalk(ste_id) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
-create table Mevent(
+create table mevent(
 	e_id int auto_increment unique,
     ename varchar(20) not null,
     startdate date not null,
@@ -62,7 +62,7 @@ create table Mevent(
     foreign key (d_id) references department(d_id) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
-create table subeventTalk(
+create table subeventtalk(
 	ste_id int auto_increment unique,
     stename varchar(20) not null,
     stedate date not null,

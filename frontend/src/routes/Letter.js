@@ -127,20 +127,21 @@ function Letter()
   
   return (
     <div
-      className="text-md text-gray-800 flex flex-col max-w-full
-       py-10 px-10 min-h-screen ml-[253px]"
+      className="text-md text-gray-800 flex flex-col w-full items-center
+       py-10 px-20 min-h-screen ml-[253px]"
     >
 
-
-          <div className='flex justify-center text-xl p-2'>
+        <div className='w-2/3'>
+        <div className='flex justify-center text-xl p-2'>
             <div className=''><b>Departmental Letter for : </b></div>
             <select value={selectdept} name={selectdeptname} onChange={handleDeptChange} className="flex items-center justify-center rounded-md bg-white py-1 px-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
               {dept.map((dept) => (
                 <option id={dept.name} name={dept.name}  value={dept.d_id}>{dept.name}</option>
               ))}
             </select>
-          </div>
-          <div className='flex justify-center '>
+        </div>
+
+        <div className='flex justify-center '>
             <div className=''>
               <b>Year :</b>
               <select className='pr-1' onChange={(e)=>{setSelectYear(e.target.value)}} value={selectyear}>
@@ -166,13 +167,13 @@ function Letter()
             <button onClick={handlePrint} className='bg-red-700 hover:bg-red-600 text-black  py-1 px-4 rounded-full'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className='w-4 h-4 fill-white'><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM64 224H88c30.9 0 56 25.1 56 56s-25.1 56-56 56H80v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V320 240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24H80v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H176c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H304v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H304v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V304 240c0-8.8 7.2-16 16-16z" /></svg>
             </button>
-          </div>
+        </div>
          
          <p className='p-4'></p>
 
-        <div ref={printDiv}>
-          <div className='flex flex-col w-[1000px] border py-6 px-8' >
-              <div className='w-full flex  justify-center text-xl'><h1 className='text-lg font-bold'>{selectdeptname}</h1></div>
+        <div ref={printDiv} className=''>
+          <div className='flex flex-col border py-6 px-8' >
+              <div className='flex  justify-center text-xl'><h1 className='text-lg font-bold'>{selectdeptname}</h1></div>
 
               <p className='p-4'></p>
               <h1 className='text-md font-bold'>Events : </h1>
@@ -302,6 +303,7 @@ function Letter()
       
           </div>
 
+        </div>
         </div>
         
     </div>

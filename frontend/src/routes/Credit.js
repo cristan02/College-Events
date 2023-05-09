@@ -51,12 +51,11 @@ function Credit() {
   }, [])
   return (
     <div
-      className="w-full  text-md text-gray-800 flex flex-col max-w-full
-       py-10 px-10 min-h-screen ml-[253px]"
+      className=" text-md text-gray-800 py-10 px-20 min-h-screen ml-[253px] flex flex-col  w-full"
     >
-      <div className="flex justify-between w-full">
-        <div className="text-xl p-2">
-          <b>Credits</b>
+      <div className="text-black font-bold flex justify-between items-center">
+        <div className="text-2xl p-2">
+          Credits
         </div>
         <Link to="/Credit/AddSingle">
           <button className="bg-green-400 hover:bg-green-500  py-4 px-4  h-[30px] mr-10 rounded-full font-semibold flex items-center justify-center">
@@ -71,80 +70,74 @@ function Credit() {
           </button>
         </Link>
       </div>
+      <p className='p-1'></p>
 
-      <div className="flex">
-        <div className="w-[100px] p-2 font-bold text-md text-gray-800">Roll No.</div>
-        <p className="px-1"></p>
-        <div className="w-[440px]  p-2 font-bold text-md text-gray-800">Full Name</div>
-        <p className="px-1"></p>
-        <div className="w-[130px]  p-2 font-bold text-md text-gray-800">Year Joined</div>
-        <p className="px-1"></p>
-        <div className="w-[130px]  p-2 font-bold text-md text-gray-800">Credit Hours</div>
-        <p className="px-1"></p>
+      <div className="grid grid-cols-6 bg-black text-white font-bold text-md boder">
+        <div className="p-2 flex justify-center border-r">Roll No.</div>
+        
+        <div className="p-2 col-span-2 flex justify-center border-r">Full Name</div>
+        
+        <div className="p-2 flex justify-center border-r">Year Joined</div>
+        
+        <div className="p-2 flex justify-center border-r">Credit Hours</div>
+        
+        <div className="p-2 flex justify-center">Edit Details</div>
       </div>
 
-      <div className="flex flex-col">
-      <hr className=' w-full h-[1px] bg-gray-900'></hr>
-        {credits &&
-          credits.map((stud) => (
-            <div>
-              <div className="flex">
-              <div className="w-[100px] px-2 py-1 flex justify-center">
-                {stud.roll_no}
-              </div>
-              <p className="px-1"></p>
-              <div className="w-[440px] px-2 py-1">
-                {stud.fname} {stud.lname}
-              </div>
-              <p className="px-1"></p>
-              <div className="w-[130px]  px-2 py-1 flex justify-center">
-                {stud.year_joined}
-              </div>
-              <p className="px-1"></p>
-              <div className="w-[130px] px-2 py-1 flex justify-center">
-                {stud.tot_credits}
-              </div>
-              <p className="px-6"></p>
-              <div className="w-[70px] px-2 py-1 flex justify-end">
-                <button
-                  onClick={() => {
-                    openModal()
-                    setSelectedStud(stud)
-                  }}
-                  className="flex items-center justify-center text-white  py-1 px-2 rounded-full h-[30px] "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="w-4 h-4 fill-blue-800"
-                  >
-                    <path d="M368.4 18.3L312.7 74.1 437.9 199.3l55.7-55.7c21.9-21.9 21.9-57.3 0-79.2L447.6 18.3c-21.9-21.9-57.3-21.9-79.2 0zM288 94.6l-9.2 2.8L134.7 140.6c-19.9 6-35.7 21.2-42.3 41L3.8 445.8c-3.8 11.3-1 23.9 7.3 32.4L164.7 324.7c-3-6.3-4.7-13.3-4.7-20.7c0-26.5 21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48c-7.4 0-14.4-1.7-20.7-4.7L33.7 500.9c8.6 8.3 21.1 11.2 32.4 7.3l264.3-88.6c19.7-6.6 35-22.4 41-42.3l43.2-144.1 2.8-9.2L288 94.6z" />
-                  </svg>
-                </button>
-              </div>
-              <div className="w-[70px] px-2 py-1 flex justify-start">
-                <button
-                  onClick={() => {
-                    handleDelete(stud.roll_no)
-                  }}
-                  className="flex items-center justify-center text-black  py-1 px-2 rounded-full h-[30px]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 384 512"
-                    className="w-4 h-4 fill-red-500"
-                  >
-                    <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                  </svg>
-                </button>
-              </div>
-              <p className="px-1"></p>
-              
-            </div>
-            <hr className=' w-full h-[1px] bg-gray-900'></hr>
+      <div className="">
+          {credits &&
+            credits.map((stud) => (
+              <div className="grid grid-cols-6 border-b">
+                
+                <div className="py-2 flex justify-center border-x">{stud.roll_no}</div>
+                
+                <div className="py-2 px-4 col-span-2 border-r">{stud.fname} {stud.lname}</div>
+                
+                <div className="py-2 flex justify-center border-r">{stud.year_joined}</div>
+                
+                <div className="py-2 flex justify-center border-r">{stud.tot_credits}</div>
+                
+                <div className='py-2 flex justify-center border-r'>
+                  <div className="">
+                    <button
+                      onClick={() => {
+                        openModal()
+                        setSelectedStud(stud)
+                      }}
+                      className="flex items-center justify-center text-white  py-1 px-2 rounded-full h-[30px] "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        className="w-4 h-4 fill-blue-800"
+                      >
+                        <path d="M368.4 18.3L312.7 74.1 437.9 199.3l55.7-55.7c21.9-21.9 21.9-57.3 0-79.2L447.6 18.3c-21.9-21.9-57.3-21.9-79.2 0zM288 94.6l-9.2 2.8L134.7 140.6c-19.9 6-35.7 21.2-42.3 41L3.8 445.8c-3.8 11.3-1 23.9 7.3 32.4L164.7 324.7c-3-6.3-4.7-13.3-4.7-20.7c0-26.5 21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48c-7.4 0-14.4-1.7-20.7-4.7L33.7 500.9c8.6 8.3 21.1 11.2 32.4 7.3l264.3-88.6c19.7-6.6 35-22.4 41-42.3l43.2-144.1 2.8-9.2L288 94.6z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="">
+                    <button
+                      onClick={() => {
+                        handleDelete(stud.roll_no)
+                      }}
+                      className="flex items-center justify-center text-black  py-1 px-2 rounded-full h-[30px]"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 384 512"
+                        className="w-4 h-4 fill-red-500"
+                      >
+                        <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
             </div>
           ))}
       </div>
+
+     
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

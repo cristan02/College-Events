@@ -1,161 +1,160 @@
-use college;
+use college,
 
-insert into department values (null , "Computer Science" , "CS");
-insert into department values (null , "Chemistry" , "Chem");
-insert into department values (null , "Botany" , "Bot");
-insert into department values (null , "Geography" , "Geog");
-insert into department values (null , "Geology" , "Geo");
-insert into department values (null , "Mathematics" , "Math");
-insert into department values (null , "Physics" , "Phy");
-insert into department values (null , "Zoology" , "Zoo");
-insert into department values (null , "English" , "Eng");
-insert into department values (null , "French", "Fre");
-insert into department values (null , "Hindi" , "Hind");
-insert into department values (null , "Konkani" , "Konk");
-insert into department values (null , "Marathi" , "Mar");
-insert into department values (null , "Economics" , "Eco");
-insert into department values (null , "History" , "Hist");
-insert into department values (null , "Philosophy" , "Phlo");
-insert into department values (null , "Psychology" , "Psy");
-insert into department values (null , "Sociology" , "Scio");
+insert into department values (null , "Computer Science" , "CS"),
+ (null , "Chemistry" , "Chem"),
+ (null , "Botany" , "Bot"),
+ (null , "Geography" , "Geog"),
+ (null , "Geology" , "Geo"),
+ (null , "Mathematics" , "Math"),
+ (null , "Physics" , "Phy"),
+ (null , "Zoology" , "Zoo"),
+ (null , "English" , "Eng"),
+ (null , "French", "Fre"),
+ (null , "Hindi" , "Hind"),
+ (null , "Konkani" , "Konk"),
+ (null , "Marathi" , "Mar"),
+ (null , "Economics" , "Eco"),
+ (null , "History" , "Hist"),
+ (null , "Philosophy" , "Phlo"),
+ (null , "Psychology" , "Psy"),
+ (null , "Sociology" , "Scio");
 
-insert into student values ( null , "Reeve" , "Barretto" , 2020 , null , 1);
-insert into student values ( null , "Mujib" , "Shaikh" , 2021 , null , 1);
-insert into student values ( null , "Shelton" , "Fernandes" , 2022 , null , 1);
-insert into student values ( null , "Shreyas" , "Bagkar" , 2020 , null , 1);
-insert into student values ( null , "Simran" , "Naik" , 2021 , null , 1);
-insert into student values ( null , "Smruthul" , "M.S." , 2022 , null , 1);
-insert into student values ( null , "Akilah" , "Falcao" , 2020 , null , 1);
-insert into student values ( null , "Wenona" , "Pires" , 2021 , null , 1);
-insert into student values ( null , "Nihala" , "Fernandes" , 2022 , null , 1);
-insert into student values ( null , "Prapti" , "Ajgaonkar" , 2020 , null , 1);
-insert into student values ( null , "Pratham" , "Naik" , 2020 , null , 1);
-insert into student values ( null , "Reeve" , "Barretto" , 2020 , null , 1);
-insert into student values ( null , "Mujib" , "Shaikh" , 2020 , null , 1);
-insert into student values ( null , "Shelton" , "Fernandes" , 2020 , null , 1);
-insert into student values ( null , "Shreyas" , "Bagkar" , 2020 , null , 1);
-insert into student values ( null , "Simran" , "Naik" , 2020 , null , 1);
-insert into student values ( null , "Smruthul" , "M.S." , 2020 , null , 1);
-insert into student values ( null , "Akilah" , "Falcao" , 2020 , null , 2);
-insert into student values ( null , "Wenona" , "Pires" , 2020 , null , 6);
+ insert into student values( null , "Reeve" , "Barretto" , 2020 , null , 1),
+ ( null , "Mujib" , "Shaikh" , 2021 , null , 1),
+ ( null , "Shelton" , "Fernandes" , 2022 , null , 1),
+ ( null , "Shreyas" , "Bagkar" , 2020 , null , 1),
+ ( null , "Simran" , "Naik" , 2021 , null , 1),
+ ( null , "Smruthul" , "M.S." , 2022 , null , 1),
+ ( null , "Akilah" , "Falcao" , 2020 , null , 1),
+ ( null , "Wenona" , "Pires" , 2021 , null , 1),
+ ( null , "Nihala" , "Fernandes" , 2022 , null , 1),
+ ( null , "Prapti" , "Ajgaonkar" , 2020 , null , 1),
+ ( null , "Pratham" , "Naik" , 2020 , null , 1),
+ ( null , "Reeve" , "Barretto" , 2020 , null , 1),
+ ( null , "Mujib" , "Shaikh" , 2020 , null , 1),
+ ( null , "Shelton" , "Fernandes" , 2020 , null , 1),
+ ( null , "Shreyas" , "Bagkar" , 2020 , null , 1),
+ ( null , "Simran" , "Naik" , 2020 , null , 1),
+ ( null , "Smruthul" , "M.S." , 2020 , null , 1),
+ ( null , "Akilah" , "Falcao" , 2020 , null , 2),
+ ( null , "Wenona" , "Pires" , 2020 , null , 6),
+ ( null , "Samarth" , "Sawant" , 2020 , null , 2),
+ ( null , "Sara" , "Shaik" , 2020 , null , 2),
+ ( null , "Shreshta" , "Dessai" , 2022 , null , 2),
+ ( null , "Trilok" , "Singh" , 2020 , null , 2),
+ ( null , "Shruti" , "Arolker" , 2018 , null , 2),
+ ( null , "Salome" , "Noronha" , 2019 , null , 2),
+ ( null , "Khushi" , "Desai" , 2019 , null , 2),
+ ( null , "Chelsea" , "Dias" , 2018 , null , 2),
+ ( null , "Carol" , "Dessai" , 2018 , null , 2);
 
-insert into student values ( null , "Samarth" , "Sawant" , 2020 , null , 2);
-insert into student values ( null , "Sara" , "Shaik" , 2020 , null , 2);
-insert into student values ( null , "Shreshta" , "Dessai" , 2022 , null , 2);
-insert into student values ( null , "Trilok" , "Singh" , 2020 , null , 2);
-insert into student values ( null , "Shruti" , "Arolker" , 2018 , null , 2);
-insert into student values ( null , "Salome" , "Noronha" , 2019 , null , 2);
-insert into student values ( null , "Khushi" , "Desai" , 2019 , null , 2);
-insert into student values ( null , "Chelsea" , "Dias" , 2018 , null , 2);
-insert into student values ( null , "Carol" , "Dessai" , 2018 , null , 2);
+ insert into faculty values( null , "Dikshita" , "Aroskar" , "Asst Proff" , 1),
+ ( null , "Ian" , "Barreto" , "Assoc Proff" , 1),
+ ( null , "Judith" , "Barreto" , "Asst Proff" , 1),
+ ( null , "Kumresh" , "C" , "Assoc Proff" , 1),
+ ( null , "Sameena" , "Falleiro" , "Assoc Proff" , 1),
+ ( null , "Sanas" , "Shaikh" , "Asst Proff" , 1),
+ ( null , "Shaila" , "Ghanti" , "Assoc Proff" , 1),
+ ( null , "Lactina" , "Gonsalves" , "Assoc Proff" , 2),
+ ( null , "Sachin" , "Kakodkar" , "Assoc Proff" , 2),
+ ( null , "Manjita" , "Porob" , "Assoc Proff" , 2),
+ ( null , "Padmini" , "Panjikar" , "Assoc Proff" , 2);
 
-insert into faculty values ( null , "Dikshita" , "Aroskar" , "Asst Proff" , 1);
-insert into faculty values ( null , "Ian" , "Barreto" , "Assoc Proff" , 1);
-insert into faculty values ( null , "Judith" , "Barreto" , "Asst Proff" , 1);
-insert into faculty values ( null , "Kumresh" , "C" , "Assoc Proff" , 1);
-insert into faculty values ( null , "Sameena" , "Falleiro" , "Assoc Proff" , 1);
-insert into faculty values ( null , "Sanas" , "Shaikh" , "Asst Proff" , 1);
-insert into faculty values ( null , "Shaila" , "Ghanti" , "Assoc Proff" , 1);
-insert into faculty values ( null , "Lactina" , "Gonsalves" , "Assoc Proff" , 2);
-insert into faculty values ( null , "Sachin" , "Kakodkar" , "Assoc Proff" , 2);
-insert into faculty values ( null , "Manjita" , "Porob" , "Assoc Proff" , 2);
-insert into faculty values ( null , "Padmini" , "Panjikar" , "Assoc Proff" , 2);
+insert into workshop values ( null , "Web Development" , "2022-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.HC-UyOCPxhwxSX_PltuYvgHaEj?w=261&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.UB2JvpKuexLOKKo09Qx0pwHaE8?w=284&h=189&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1),
+( null , "AI" , "2022-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.BqKdgPjor3R6DK5PZmS3ZQHaFj?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ah99LJ3z6Bgr_J1c3JEs7AHaDo?w=303&h=171&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2),
+( null , "Graphic Design" , "2022-11-07" , "held on ...." , "https://th.bing.com/th/id/OIP.G_tOhn1snMAeO3covZlvEwHaEi?w=276&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.yymYaZW4YfTu4518RgOV6QHaFj?w=226&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3),
+( null , "Design Thinking" , "2022-02-24" , "held on ...." , "https://th.bing.com/th/id/OIP.dPG-yTQiOvKwzFdfd0YZ2AHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ncnhbbQMcyXOixJFp-uVlwHaE8?w=287&h=191&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 4),
+( null , "Property Awareness" , "2021-12-20" , "held on ...." , "https://th.bing.com/th/id/OIP.1_GfFrhUX3a1965ONY1E1AHaEK?w=276&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.bIrpBtJwDm74zc8wG53FsgHaE8?w=299&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 5),
+( null , "Women in Leadership" , "2021-11-30" , "held on ...." , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.KXNtdEnreoK4DafBLSdLOAHaFj?w=207&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 6),
+( null , "Digital World" , "2021-11-27" , "This workshop will provide tips and resources to help you plan and get started on your dissertation or project - which will be a much larger, independent piece of work than other assignments.." , "https://th.bing.com/th/id/OIP.bcn6K-DZX17XYRNVMaz4egHaE7?w=294&h=196&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ggzrZ6E-gS3QJvdxMMj9owHaFj?w=216&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 7),
+( null , "Immersive Technology" , "2021-11-27" , "held on ...." , "https://th.bing.com/th/id/OIP.z03v12O9aypiLFYJqONgwAHaFj?w=191&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.oU10V8iQQ9f5lUYWOTQumwHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 8),
+( null , "Effect of Cancer" , "2021-07-18" , "held on ...." , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.8rQyHw7KhzD2rx1A0IADGAHaE8?w=227&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 9),
+( null , "Sustainable Living " , "2021-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.BAtpMIjlp_eci2MOeh1erAHaEw?w=257&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.yMXqqegUgYhjLXNpyYe3rgAAAA?w=181&h=131&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 10),
+( null , "Involve to Evolve" , "2021-08-15" , "held on ...." , "https://th.bing.com/th/id/OIP.QeiiUMGu8hrnU_XzFSCNfgHaE8?w=270&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.lnZ8aSmb4GE5aDs1aBqWPwEgDY?w=216&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 11),
+( null , "Communication Skills" , "2020-10-12" , "This workshop will provide tips for effective group working to complete a task in a timely manner" , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.4cXSKIUqmKLdBWT5vhu6_QHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 9),
+( null , "Remote Teaching" , "2020-08-10" , "This workshop will introduce the steps in creating an effective presentation. It will provide tips and resources to help deliver good presentations." , "https://th.bing.com/th/id/OIP.jRwIwLWNaoJ_4Ds95gw-2wHaFj?w=225&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.CWutvWSix3RN7F5tYSA5mwHaHa?w=203&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 8),
+( null , "Teacher's Portfolio" , "2020-06-25" , "held on ...." , "https://th.bing.com/th/id/OIP.jfwOnJoJB1DrgIVDRKNiRwHaEK?w=313&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.CWutvWSix3RN7F5tYSA5mwHaHa?w=203&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 7);
 
-insert into workshop values ( null , "Web Development" , "2022-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.HC-UyOCPxhwxSX_PltuYvgHaEj?w=261&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.UB2JvpKuexLOKKo09Qx0pwHaE8?w=284&h=189&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1);
-insert into workshop values ( null , "AI" , "2022-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.BqKdgPjor3R6DK5PZmS3ZQHaFj?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ah99LJ3z6Bgr_J1c3JEs7AHaDo?w=303&h=171&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2);
-insert into workshop values ( null , "Graphic Design" , "2022-11-07" , "held on ...." , "https://th.bing.com/th/id/OIP.G_tOhn1snMAeO3covZlvEwHaEi?w=276&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.yymYaZW4YfTu4518RgOV6QHaFj?w=226&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3);
-insert into workshop values ( null , "Design Thinking" , "2022-02-24" , "held on ...." , "https://th.bing.com/th/id/OIP.dPG-yTQiOvKwzFdfd0YZ2AHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ncnhbbQMcyXOixJFp-uVlwHaE8?w=287&h=191&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 4);
-insert into workshop values ( null , "Property Awareness" , "2021-12-20" , "held on ...." , "https://th.bing.com/th/id/OIP.1_GfFrhUX3a1965ONY1E1AHaEK?w=276&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.bIrpBtJwDm74zc8wG53FsgHaE8?w=299&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 5);
-insert into workshop values ( null , "Women in Leadership" , "2021-11-30" , "held on ...." , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.KXNtdEnreoK4DafBLSdLOAHaFj?w=207&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 6);
-insert into workshop values ( null , "Digital World" , "2021-11-27" , "This workshop will provide tips and resources to help you plan and get started on your dissertation or project - which will be a much larger, independent piece of work than other assignments.." , "https://th.bing.com/th/id/OIP.bcn6K-DZX17XYRNVMaz4egHaE7?w=294&h=196&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ggzrZ6E-gS3QJvdxMMj9owHaFj?w=216&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 7);
-insert into workshop values ( null , "Immersive Technology" , "2021-11-27" , "held on ...." , "https://th.bing.com/th/id/OIP.z03v12O9aypiLFYJqONgwAHaFj?w=191&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.oU10V8iQQ9f5lUYWOTQumwHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 8);
-insert into workshop values ( null , "Effect of Cancer" , "2021-07-18" , "held on ...." , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.8rQyHw7KhzD2rx1A0IADGAHaE8?w=227&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 9);
-insert into workshop values ( null , "Sustainable Living " , "2021-08-10" , "held on ...." , "https://th.bing.com/th/id/OIP.BAtpMIjlp_eci2MOeh1erAHaEw?w=257&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.yMXqqegUgYhjLXNpyYe3rgAAAA?w=181&h=131&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 10);
-insert into workshop values ( null , "Involve to Evolve" , "2021-08-15" , "held on ...." , "https://th.bing.com/th/id/OIP.QeiiUMGu8hrnU_XzFSCNfgHaE8?w=270&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.lnZ8aSmb4GE5aDs1aBqWPwEgDY?w=216&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 11);
-insert into workshop values ( null , "Communication Skills" , "2020-10-12" , "This workshop will provide tips for effective group working to complete a task in a timely manner" , "https://th.bing.com/th/id/OIP.voroy77eHTfa04YREG0zkAHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.4cXSKIUqmKLdBWT5vhu6_QHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 9);
-insert into workshop values ( null , "Remote Teaching" , "2020-08-10" , "This workshop will introduce the steps in creating an effective presentation. It will provide tips and resources to help deliver good presentations." , "https://th.bing.com/th/id/OIP.jRwIwLWNaoJ_4Ds95gw-2wHaFj?w=225&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.CWutvWSix3RN7F5tYSA5mwHaHa?w=203&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 8);
-insert into workshop values ( null , "Teacher's Portfolio" , "2020-06-25" , "held on ...." , "https://th.bing.com/th/id/OIP.jfwOnJoJB1DrgIVDRKNiRwHaEK?w=313&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.CWutvWSix3RN7F5tYSA5mwHaHa?w=203&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 7);
+insert into credits values ( null , 1 , 1),
+  ( null , 2 , 2),
+  ( null , 3 , 3),
+  ( null , 4 , 4),
+  ( null , 5 , 5),
+  ( null , 6 , 6),
+  ( null , 7 , 7),
+  ( null , 8 , 8),
+  ( null , 9 , 9),
+  ( null , 1 , 2),
+  ( null , 2 , 3),
+  ( null , 3 , 4),
+  ( null , 4 , 5),
+  ( null , 5 , 6),
+  ( null , 6 , 7),
+  ( null , 7 , 8),
+  ( null , 8 , 9),
+  ( null , 9 , 3),
+  ( null , 1 , 4),
+  ( null , 2 , 5),
+  ( null , 3 , 6),
+  ( null , 4 , 7),
+  ( null , 5 , 8),
+  ( null , 6 , 9),
+  ( null , 7 , 20),
+  ( null , 8 , 19),
+  ( null , 9 , 18),
+  ( null , 1 , 17),
+  ( null , 1 , 16),
+  ( null , 1 , 15),
+  ( null , 1 , 14),
+  ( null , 1 , 13),
+  ( null , 1 , 12),
+  ( null , 1 , 11),
+  ( null , 1 , 1),
+  ( null , 9 , 2),
+  ( null , 10 , 10),
+  ( null , 11 , 11),
+  ( null , 12 , 12),
+  ( null , 13 , 13),
+  ( null , 14 , 14),
+  ( null , 15 , 15),
+  ( null , 16 , 16),
+  ( null , 17 , 17),
+  ( null , 18 , 18),
+  ( null , 19 , 19),
+  ( null , 20 , 20),
+  ( null , 21 , 21),
+  ( null , 22 , 22),
+  ( null , 23 , 22);
 
-insert into credits values ( null , 1 , 1);
-insert into credits values ( null , 2 , 2);
-insert into credits values ( null , 3 , 3);
-insert into credits values ( null , 4 , 4);
-insert into credits values ( null , 5 , 5);
-insert into credits values ( null , 6 , 6);
-insert into credits values ( null , 7 , 7);
-insert into credits values ( null , 8 , 8);
-insert into credits values ( null , 9 , 9);
-insert into credits values ( null , 1 , 2);
-insert into credits values ( null , 2 , 3);
-insert into credits values ( null , 3 , 4);
-insert into credits values ( null , 4 , 5);
-insert into credits values ( null , 5 , 6);
-insert into credits values ( null , 6 , 7);
-insert into credits values ( null , 7 , 8);
-insert into credits values ( null , 8 , 9);
-insert into credits values ( null , 9 , 3);
-insert into credits values ( null , 1 , 4);
-insert into credits values ( null , 2 , 5);
-insert into credits values ( null , 3 , 6);
-insert into credits values ( null , 4 , 7);
-insert into credits values ( null , 5 , 8);
-insert into credits values ( null , 6 , 9);
-insert into credits values ( null , 7 , 20);
-insert into credits values ( null , 8 , 19);
-insert into credits values ( null , 9 , 18);
-insert into credits values ( null , 1 , 17);
-insert into credits values ( null , 1 , 16);
-insert into credits values ( null , 1 , 15);
-insert into credits values ( null , 1 , 14);
-insert into credits values ( null , 1 , 13);
-insert into credits values ( null , 1 , 12);
-insert into credits values ( null , 1 , 11);
-insert into credits values ( null , 1 , 1);
-insert into credits values ( null , 9 , 2);
-insert into credits values ( null , 10 , 10);
-insert into credits values ( null , 11 , 11);
-insert into credits values ( null , 12 , 12);
-insert into credits values ( null , 13 , 13);
-insert into credits values ( null , 14 , 14);
-insert into credits values ( null , 15 , 15);
-insert into credits values ( null , 16 , 16);
-insert into credits values ( null , 17 , 17);
-insert into credits values ( null , 18 , 18);
-insert into credits values ( null , 19 , 19);
-insert into credits values ( null , 20 , 20);
-insert into credits values ( null , 21 , 21);
-insert into credits values ( null , 22 , 22);
-insert into credits values ( null , 23 , 22);
+ insert into mevent values( null , "IRIX" , "2022-08-10" , "https://th.bing.com/th/id/OIP.WykiZDp7CVulnOAC-19MAwHaEB?w=339&h=184&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1),
+ ( null , "TechFest" , "2022-06-20" , "https://th.bing.com/th/id/OIP.WykiZDp7CVulnOAC-19MAwHaEB?w=339&h=184&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1),
+ ( null , "Tathastu" , "2022-06-20" , "https://th.bing.com/th/id/OIP.pUP-4O9htXZ8PkaHW20LQAHaEK?w=314&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , null),
+ ( null , "Kynesis" , "2022-05-15" , "https://th.bing.com/th/id/OIP.rqeoaX7GmRejYIzFD_p9fAHaE6?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2),
+ ( null , "Trick or Treat" , "2022-10-29" , "https://th.bing.com/th/id/OIP.5YLS-qL7wmR-7B1tAR05DAHaEK?w=256&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3),
+ ( null , "Palm and Canvas" , "2022-10-21" , "https://th.bing.com/th/id/OIP.1yNUur8oElRZlcOY1fiLVAHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3),
+ ( null , "Psyched-Up 2.0" , "2022-10-13" , "https://th.bing.com/th/id/OIP.LFYyjxVHTpb10QZrFouBYgHaCH?w=301&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3);
 
-insert into mevent values ( null , "IRIX" , "2022-08-10" , "https://th.bing.com/th/id/OIP.WykiZDp7CVulnOAC-19MAwHaEB?w=339&h=184&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1);
-insert into mevent values ( null , "TechFest" , "2022-06-20" , "https://th.bing.com/th/id/OIP.WykiZDp7CVulnOAC-19MAwHaEB?w=339&h=184&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1);
-insert into mevent values ( null , "Tathastu" , "2022-06-20" , "https://th.bing.com/th/id/OIP.pUP-4O9htXZ8PkaHW20LQAHaEK?w=314&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , null);
-insert into mevent values ( null , "Kynesis" , "2022-05-15" , "https://th.bing.com/th/id/OIP.rqeoaX7GmRejYIzFD_p9fAHaE6?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2);
-insert into mevent values ( null , "Trick or Treat" , "2022-10-29" , "https://th.bing.com/th/id/OIP.5YLS-qL7wmR-7B1tAR05DAHaEK?w=256&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3);
-insert into mevent values ( null , "Palm and Canvas" , "2022-10-21" , "https://th.bing.com/th/id/OIP.1yNUur8oElRZlcOY1fiLVAHaE8?w=245&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3);
-insert into mevent values ( null , "Psyched-Up 2.0" , "2022-10-13" , "https://th.bing.com/th/id/OIP.LFYyjxVHTpb10QZrFouBYgHaCH?w=301&h=100&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3);
+insert into subeventtalk values ( null , "FIFA" , "2022-08-10" , 25 , "E-sports event where players play in a knockout league format." , "https://th.bing.com/th/id/OIP.i3SufWxvC7270opR0Lm2WwHaE7?w=282&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.i7x4BQaj4Qv3E_5Q_6nSdAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" ,1  , 1),
+( null , "Blind Coder" , "2022-08-10" , 20 , "Coding event where participants have to write a particular code with their screens off." , "https://th.bing.com/th/id/OIP.QYyyEbi20aFDtjNQkyqv0AHaFY?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.lG1uFK4v1rJVXCzdq3qV9QHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 1  , 1),
+( null , "Time Management" , "2022-08-10" , 20  , "This workshop will cover ways to plan revision study time and active revision strategies." , "https://th.bing.com/th/id/OIP.cg-yV4eUkhmvhXN9gBincAHaE8?w=277&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.I_X4BswSQyEsgRGfuGuCaQE9DF?w=285&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1 ,null ),
+( null , "Photography" , "2022-08-10" , 20 , "This talk covered the types of photography techniques and styles." , "https://th.bing.com/th/id/OIP.6sMSr5yXXCYyprm9eF9LmAHaDl?w=296&h=169&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.gniBhsKG6fyhUTpfvDH10AHaFj?w=204&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1 , 2 ),
+( null , "Painting" , "2022-08-10" , 25 , "Painting competition based on a particular theme." , "https://th.bing.com/th/id/OIP.fa6izQi5y8daFil3RvHvLQHaE8?w=227&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.qt2rHA1RRhArBQ170PQrbwHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2 , 4 ),
+( null , "Futsal" , "2022-08-10" , 25 , "Inter college futsal tournament held on our college futsal court." , "https://th.bing.com/th/id/OIP.eiWxhZC4OgdyiF2K_OwR4AHaIS?w=153&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.IHupMnH0yMbBHzzvUGC-7wHaEq?w=266&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", null , 3 ),
+( null , "Fashion Show" , "2022-05-15" , 25 , "Event where participants had to dress up based on a particular theme." , "https://th.bing.com/th/id/OIP.CjZYgNMtln-n7DOxGa9SswHaKK?w=128&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.tXbj5QaMCOeZZpsCqufnhAHaE8?w=305&h=187&c=7&r=0&o=5&dpr=1.31&pid=1.7", 2 , 4 ),
+( null , "Dance" , "2022-05-15" , 25 , "Group/solo dance competition on any konkani, hindi or english song." , "https://th.bing.com/th/id/OIP.fo8i0HWjYujkSn3JzlXWLgHaE8?w=264&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.XS0NznOCGC5UTclDR_rdJAHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.31&pid=1.7", 2 , 4 ),
+( null , "Treasure Hunt" , "2022-10-29" , 25 , "Event where groups of participants had to find the treasure with the help of clues hidden in the college campus." , "https://th.bing.com/th/id/OIP.HtsxGl-yOWzih2VOE60VuAHaE7?w=249&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.6JarKn9dGWFjXYARbYBblQHaEs?w=252&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 3 , 5 ),
+( null , "Religious Dialogue" , "2022-10-28" , 15 , "Inter religuous dialougue conducted for students to understand eachothers religions and grow as a community." , "https://th.bing.com/th/id/OIP.S8kmS6u9DiSpSdGgLjW-1AHaFj?w=247&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.xdLbO-F2AL4qNQxW2juaqgHaEj?w=269&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 18 , null ),
+( null , "Palm Painting" , "2022-10-21" , 15 , "Palm painting competition based on a perticular topic." , "https://th.bing.com/th/id/OIP.1HjROy5yDBTMu8_QZc3mRAHaLL?w=128&h=194&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.58GG9YNRwPQfc2lafI0zwgHaKO?w=139&h=192&c=7&r=0&o=5&dpr=1.31&pid=1.7", 3 , 6 ),
+( null , "Canvas Painting" , "2022-10-21" , 20 , "Canvas painting competition based on a perticular topic." , "https://th.bing.com/th/id/OIP.lKUljHJc2o6tdHbyHujsAAHaEK?w=282&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP._V3NXuolg7NCIlBOWMIU5AHaLD?w=144&h=216&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3 , 6 ),
 
-insert into subeventtalk values ( null , "FIFA" , "2022-08-10" , 25 , "E-sports event where players play in a knockout league format." , "https://th.bing.com/th/id/OIP.i3SufWxvC7270opR0Lm2WwHaE7?w=282&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.i7x4BQaj4Qv3E_5Q_6nSdAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" ,1  , 1);
-insert into subeventtalk values ( null , "Blind Coder" , "2022-08-10" , 20 , "Coding event where participants have to write a particular code with their screens off." , "https://th.bing.com/th/id/OIP.QYyyEbi20aFDtjNQkyqv0AHaFY?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.lG1uFK4v1rJVXCzdq3qV9QHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 1  , 1);
-insert into subeventtalk values ( null , "Time Management" , "2022-08-10" , 20  , "This workshop will cover ways to plan revision study time and active revision strategies." , "https://th.bing.com/th/id/OIP.cg-yV4eUkhmvhXN9gBincAHaE8?w=277&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.I_X4BswSQyEsgRGfuGuCaQE9DF?w=285&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1 ,null );
-insert into subeventtalk values ( null , "Photography" , "2022-08-10" , 20 , "This talk covered the types of photography techniques and styles." , "https://th.bing.com/th/id/OIP.6sMSr5yXXCYyprm9eF9LmAHaDl?w=296&h=169&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.gniBhsKG6fyhUTpfvDH10AHaFj?w=204&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 1 , 2 );
-insert into subeventtalk values ( null , "Painting" , "2022-08-10" , 25 , "Painting competition based on a particular theme." , "https://th.bing.com/th/id/OIP.fa6izQi5y8daFil3RvHvLQHaE8?w=227&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.qt2rHA1RRhArBQ170PQrbwHaFj?w=235&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 2 , 4 );
-insert into subeventtalk values ( null , "Futsal" , "2022-08-10" , 25 , "Inter college futsal tournament held on our college futsal court." , "https://th.bing.com/th/id/OIP.eiWxhZC4OgdyiF2K_OwR4AHaIS?w=153&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.IHupMnH0yMbBHzzvUGC-7wHaEq?w=266&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", null , 3 );
-insert into subeventtalk values ( null , "Fashion Show" , "2022-05-15" , 25 , "Event where participants had to dress up based on a particular theme." , "https://th.bing.com/th/id/OIP.CjZYgNMtln-n7DOxGa9SswHaKK?w=128&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.tXbj5QaMCOeZZpsCqufnhAHaE8?w=305&h=187&c=7&r=0&o=5&dpr=1.31&pid=1.7", 2 , 4 );
-insert into subeventtalk values ( null , "Dance" , "2022-05-15" , 25 , "Group/solo dance competition on any konkani, hindi or english song." , "https://th.bing.com/th/id/OIP.fo8i0HWjYujkSn3JzlXWLgHaE8?w=264&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.XS0NznOCGC5UTclDR_rdJAHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.31&pid=1.7", 2 , 4 );
-insert into subeventtalk values ( null , "Treasure Hunt" , "2022-10-29" , 25 , "Event where groups of participants had to find the treasure with the help of clues hidden in the college campus." , "https://th.bing.com/th/id/OIP.HtsxGl-yOWzih2VOE60VuAHaE7?w=249&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.6JarKn9dGWFjXYARbYBblQHaEs?w=252&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 3 , 5 );
-insert into subeventtalk values ( null , "Religious Dialogue" , "2022-10-28" , 15 , "Inter religuous dialougue conducted for students to understand eachothers religions and grow as a community." , "https://th.bing.com/th/id/OIP.S8kmS6u9DiSpSdGgLjW-1AHaFj?w=247&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.xdLbO-F2AL4qNQxW2juaqgHaEj?w=269&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 18 , null );
-insert into subeventtalk values ( null , "Palm Painting" , "2022-10-21" , 15 , "Palm painting competition based on a perticular topic." , "https://th.bing.com/th/id/OIP.1HjROy5yDBTMu8_QZc3mRAHaLL?w=128&h=194&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.58GG9YNRwPQfc2lafI0zwgHaKO?w=139&h=192&c=7&r=0&o=5&dpr=1.31&pid=1.7", 3 , 6 );
-insert into subeventtalk values ( null , "Canvas Painting" , "2022-10-21" , 20 , "Canvas painting competition based on a perticular topic." , "https://th.bing.com/th/id/OIP.lKUljHJc2o6tdHbyHujsAAHaEK?w=282&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP._V3NXuolg7NCIlBOWMIU5AHaLD?w=144&h=216&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 3 , 6 );
+( null , "Let the Melody Speak" , "2022-10-13" , 20 , "Solo singing competition" , "https://th.bing.com/th/id/OIP.8JcQwWznmUO47pshmnwZegHaHC?w=187&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.n3YaMZ9ZqNjMiKorgmb-QgHaE8?w=284&h=190&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Shake it off" , "2022-10-13" , 25 , "Solo/Group dance competition" , "https://th.bing.com/th/id/OIP.mKJ-FJduK9TXi1y1ThjfUAHaE8?w=262&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.BBiwKvX3rwA9A-bQug2tEwHaFK?w=277&h=193&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Mind your Canvas" , "2022-10-13" , 20 , "Painting competition" , "https://th.bing.com/th/id/OIP.pleqwO7U7Gr1oCnG8nGuPwHaEc?w=316&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.hyjU8pSV7OmttA7wVOqLTwHaFj?w=253&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Shakespeare Who?" , "2022-10-14" , 20 , "Poetry competition" , "https://th.bing.com/th/id/OIP.Et-jMNLmOMnD9Gtpy9n-rQAAAA?w=203&h=139&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.JmgciEjGSojQkbJLQcdSdQHaHa?w=158&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Don't Stop Rolling" , "2022-10-14" , 25 , "Reel making competition" , "https://th.bing.com/th/id/OIP.6mrM4TTxJH-20wSmPtDxIAHaE8?w=193&h=183&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.rXfLdyjM4nE49kBqB5X98gHaDV?w=327&h=157&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Chef's Choice" , "2022-10-14" , 25 , "Event where students had to prepare a dish and it had to be judged." , "https://th.bing.com/th/id/OIP.NPqbFI5fSSfbEzrgLt2xVwHaFL?w=239&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.VDCY1EOYAL3JAzYnpGleWwHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 17 , 7 ),
+( null , "Acts from a Hat" , "2022-10-14" , 20 , "Cosplay competition" , "https://th.bing.com/th/id/OIP.7pWFjtcbJHYFblriZUvzOwHaE7?w=284&h=189&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.jzh176PfOZ1ok5X1bupgQgHaE8?w=267&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
+( null , "Beautylicious" , "2022-10-14" , 25 , "Mr. and Mrs. Psyched-Up 2.0" , "https://th.bing.com/th/id/OIP.F8P46hiXuwSs7ujXYxWbTgHaE7?w=286&h=190&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ofs96j8oqZdRSO4Q25JonAHaFC?w=249&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 ),
 
-insert into subeventtalk values ( null , "Let the Melody Speak" , "2022-10-13" , 20 , "Solo singing competition" , "https://th.bing.com/th/id/OIP.8JcQwWznmUO47pshmnwZegHaHC?w=187&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.n3YaMZ9ZqNjMiKorgmb-QgHaE8?w=284&h=190&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Shake it off" , "2022-10-13" , 25 , "Solo/Group dance competition" , "https://th.bing.com/th/id/OIP.mKJ-FJduK9TXi1y1ThjfUAHaE8?w=262&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.BBiwKvX3rwA9A-bQug2tEwHaFK?w=277&h=193&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Mind your Canvas" , "2022-10-13" , 20 , "Painting competition" , "https://th.bing.com/th/id/OIP.pleqwO7U7Gr1oCnG8nGuPwHaEc?w=316&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.hyjU8pSV7OmttA7wVOqLTwHaFj?w=253&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Shakespeare Who?" , "2022-10-14" , 20 , "Poetry competition" , "https://th.bing.com/th/id/OIP.Et-jMNLmOMnD9Gtpy9n-rQAAAA?w=203&h=139&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.JmgciEjGSojQkbJLQcdSdQHaHa?w=158&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Don't Stop Rolling" , "2022-10-14" , 25 , "Reel making competition" , "https://th.bing.com/th/id/OIP.6mrM4TTxJH-20wSmPtDxIAHaE8?w=193&h=183&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.rXfLdyjM4nE49kBqB5X98gHaDV?w=327&h=157&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Chef's Choice" , "2022-10-14" , 25 , "Event where students had to prepare a dish and it had to be judged." , "https://th.bing.com/th/id/OIP.NPqbFI5fSSfbEzrgLt2xVwHaFL?w=239&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.VDCY1EOYAL3JAzYnpGleWwHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , 17 , 7 );
-insert into subeventtalk values ( null , "Acts from a Hat" , "2022-10-14" , 20 , "Cosplay competition" , "https://th.bing.com/th/id/OIP.7pWFjtcbJHYFblriZUvzOwHaE7?w=284&h=189&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.jzh176PfOZ1ok5X1bupgQgHaE8?w=267&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-insert into subeventtalk values ( null , "Beautylicious" , "2022-10-14" , 25 , "Mr. and Mrs. Psyched-Up 2.0" , "https://th.bing.com/th/id/OIP.F8P46hiXuwSs7ujXYxWbTgHaE7?w=286&h=190&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.ofs96j8oqZdRSO4Q25JonAHaFC?w=249&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
-
-insert into subeventtalk values ( null , "Singing Competition" , "2022-10-09" , 20 , "Singing competition conducted by French department where students had to sing french songs." , "https://th.bing.com/th/id/OIP.jduho6pjaGo3dtX1rEfrIAHaLH?w=124&h=186&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.--1zQTxxcux0roxwCQNeqAHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 10 , null );
-insert into subeventtalk values ( null , "Voice of Chowgules" , "2022-05-31" , 25 , "Singing competition where participants were allowed to sing any konkani or english song." , "https://th.bing.com/th/id/OIP.a6OsWPf4lUIgidIGxSPaMAHaD4?w=335&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.rJIEXLHTta29XX-UXmJ7bQHaHa?w=149&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
+( null , "Singing Competition" , "2022-10-09" , 20 , "Singing competition conducted by French department where students had to sing french songs." , "https://th.bing.com/th/id/OIP.jduho6pjaGo3dtX1rEfrIAHaLH?w=124&h=186&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.--1zQTxxcux0roxwCQNeqAHaE8?w=251&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 10 , null ),
+( null , "Voice of Chowgules" , "2022-05-31" , 25 , "Singing competition where participants were allowed to sing any konkani or english song." , "https://th.bing.com/th/id/OIP.a6OsWPf4lUIgidIGxSPaMAHaD4?w=335&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7" , "https://th.bing.com/th/id/OIP.rJIEXLHTta29XX-UXmJ7bQHaHa?w=149&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7", 17 , 7 );
