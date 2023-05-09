@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function Event() {
+function Event(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [departments, setDepartments] = useState([]);
@@ -14,7 +14,7 @@ function Event() {
   useEffect(() => {
     const department_options = [{ value: "", text: "--Choose an option--" }];
 
-    axios.get("http://localhost:5000/event/filter/departments").then((res) => {
+    axios.get(props.path + "event/filter/departments").then((res) => {
       res.data.forEach((department) => {
         department_options.push({
           value: department.d_id,
@@ -47,9 +47,8 @@ function Event() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title,date,dept,photo1);
     axios
-      .post("http://localhost:5000/post/event", {
+      .post(props.path + "post/event", {
         ename:title,
         startdate:date,
         d_id:dept,

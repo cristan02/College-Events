@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function AddSingle() {
+function AddSingle(props) {
 
     const [studDet , setStudDet] = useState();
     const [eventName , setEventName] = useState();
@@ -14,9 +14,8 @@ function AddSingle() {
 
     const addCredits = (e)  => {
       e.preventDefault();
-      activestudId && activeeventName && console.log(activestudId , activeeventName);
       activestudId && activeeventName && axios
-        .post("http://localhost:5000/post/credits", {
+        .post(props.path + "post/credits", {
           s_id:activestudId,
           ste_id:activeeventName,
         })
@@ -25,15 +24,15 @@ function AddSingle() {
         });
       setActiveStudId();
       setActiveEventName();
-      console.log(activestudId , activeeventName);
+  
       formRef.current.reset();
     }
 
     useEffect(() => {
-        axios.get("http://localhost:5000/get/rollno").then((res) => {
+        axios.get(props.path + "get/rollno").then((res) => {
           setStudDet(res.data);
         });
-        axios.get("http://localhost:5000/get/activities").then((res) => {
+        axios.get(props.path + "get/activities").then((res) => {
           setEventName(res.data);
         });
       })

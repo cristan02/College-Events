@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 
-function Events() {
+function Events(props) {
   return (
     <div className="flex flex-col w-full  px-10 overflow-x-hidden justify-center items-center min-h-screen ml-[253px]">
       

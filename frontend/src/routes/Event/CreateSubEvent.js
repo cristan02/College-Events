@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function Subevent() {
+function Subevent(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [credits, setCredits] = useState("");
@@ -17,7 +17,7 @@ function Subevent() {
 useEffect(() => {
   const event_options = [{ value: "", text: "-Choose Event-" }];
 
-  axios.get("http://localhost:5000/event/filter/events").then((res) => {
+  axios.get(props.path + "event/filter/events").then((res) => {
     res.data.forEach((event) => {
       event_options.push({
         value: event.e_id,
@@ -61,9 +61,8 @@ useEffect(() => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(title ,date,credits,des,evnt,photo1,photo2 );
     axios
-      .post("http://localhost:5000/post/subevent", {
+      .post(props.path + "post/subevent", {
         stename :  title ,
         stedate : date, 
         credits : credits,

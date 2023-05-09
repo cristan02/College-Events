@@ -6,7 +6,7 @@ import { useReactToPrint } from 'react-to-print';
 
 import axios from 'axios'
 
-function Letter() 
+function Letter(props) 
 {
   const currdate = new Date();
   const [selectdept , setSelectDept] = useState(0);
@@ -32,7 +32,7 @@ function Letter()
   }, [selectdept,selectmonth,selectyear])
 
   const refresh = () => {
-    axios.get('http://localhost:5000/event/filter/departments').then((res) => {
+    axios.get(props.path + 'event/filter/departments').then((res) => {
       const temp = [{ d_id: 0, name: 'College' }]
       res.data.forEach((dept) => {
         temp.push({
@@ -43,7 +43,7 @@ function Letter()
       setDept(temp)
     })
 
-    axios.get('http://localhost:5000/years').then((res) => {
+    axios.get(props.path + 'years').then((res) => {
       const temp = []
       res.data.forEach((yr)=>{
         temp.push(yr.year)
@@ -55,26 +55,26 @@ function Letter()
     {
       if(selectmonth == 0)
       {
-        axios.get('http://localhost:5000/letter/event/' +  selectyear)
+        axios.get(props.path + 'letter/event/' +  selectyear)
         .then((res) => {setEvent(res.data)})
     
-        axios.get('http://localhost:5000/letter/workshop/'+  selectyear )
+        axios.get(props.path + 'letter/workshop/'+  selectyear )
         .then((res) => {setWorkshop(res.data)})
 
-        axios.get('http://localhost:5000/letter/activity/' +  selectyear )
+        axios.get(props.path + 'letter/activity/' +  selectyear )
         .then((res) => {setActivity(res.data)})
 
     
       }
       else
       {
-        axios.get('http://localhost:5000/letter/eventcollege/' +  selectyear + '/' + selectmonth  )
+        axios.get(props.path + 'letter/eventcollege/' +  selectyear + '/' + selectmonth  )
         .then((res) => {setEvent(res.data)})
     
-        axios.get('http://localhost:5000/letter/workshopcollege/' +  selectyear + '/' + selectmonth )
+        axios.get(props.path + 'letter/workshopcollege/' +  selectyear + '/' + selectmonth )
         .then((res) => {setWorkshop(res.data)})
 
-        axios.get('http://localhost:5000/letter/activitycollege/' +   selectyear + '/' + selectmonth )
+        axios.get(props.path + 'letter/activitycollege/' +   selectyear + '/' + selectmonth )
         .then((res) => {setActivity(res.data)})
 
        
@@ -82,25 +82,25 @@ function Letter()
     else{
         if(selectmonth == 0)
         {
-          axios.get('http://localhost:5000/letter/event/' + selectdept + '/' + selectyear   )
+          axios.get(props.path + 'letter/event/' + selectdept + '/' + selectyear   )
         .then((res) => {setEvent(res.data)})
     
-        axios.get('http://localhost:5000/letter/workshop/' + selectdept + '/' + selectyear )
+        axios.get(props.path + 'letter/workshop/' + selectdept + '/' + selectyear )
         .then((res) => {setWorkshop(res.data)})
 
-        axios.get('http://localhost:5000/letter/activity/' + selectdept + '/' + selectyear )
+        axios.get(props.path + 'letter/activity/' + selectdept + '/' + selectyear )
         .then((res) => {setActivity(res.data)})
 
         
         }
         else{
-          axios.get('http://localhost:5000/letter/event/' + selectdept + '/' + selectyear + '/' + selectmonth  )
+          axios.get(props.path + 'letter/event/' + selectdept + '/' + selectyear + '/' + selectmonth  )
         .then((res) => {setEvent(res.data)})
     
-        axios.get('http://localhost:5000/letter/workshop/' + selectdept + '/' + selectyear + '/' + selectmonth )
+        axios.get(props.path + 'letter/workshop/' + selectdept + '/' + selectyear + '/' + selectmonth )
         .then((res) => {setWorkshop(res.data)})
 
-        axios.get('http://localhost:5000/letter/activity/' + selectdept + '/' + selectyear + '/' + selectmonth )
+        axios.get(props.path + 'letter/activity/' + selectdept + '/' + selectyear + '/' + selectmonth )
         .then((res) => {setActivity(res.data)})
 
         }
@@ -312,10 +312,6 @@ function Letter()
 
 export default Letter
 
-const department = [
-    "College" , "Computer Science" , "Chemistry" , "Physics" , "Maths"
-]
-
 const months = [
   {
     month : "All",
@@ -368,258 +364,5 @@ const months = [
   {
     month : "December",
     index : 12
-  },
-]
-
-const years = [
-  2022, 2020, 2018 , 2016
-]
-
-const work = [
-  {
-    _id: 1,
-    category: 'Web Development',
-    date: new Date('2022-06-10'),
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.HC-UyOCPxhwxSX_PltuYvgHaEj?w=261&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.UB2JvpKuexLOKKo09Qx0pwHaE8?w=284&h=189&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    faculty: [
-      {
-        fname: 'Abishek',
-        lname: 'Guidekar',
-        designation: 'Asst Proff',
-      },
-      {
-        fname: 'Ian',
-        lname: 'Barreto',
-        designation: 'Assoc Proff',
-      },
-    ],
-  },
-  {
-    _id: 2,
-    category: 'AI',
-    date: new Date('2022-06-20'),
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.BqKdgPjor3R6DK5PZmS3ZQHaFj?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.ah99LJ3z6Bgr_J1c3JEs7AHaDo?w=303&h=171&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    faculty: [
-      {
-        fname: 'Dikshita',
-        lname: 'Aroskar',
-        designation: 'Asst Proff',
-      },
-      {
-        fname: 'Kumresh',
-        lname: 'C',
-        designation: 'Assoc Proff',
-      },
-    ],
-  },
-  {
-    _id: 3,
-    category: 'Graphic Design',
-    date: new Date('2022-07-11'),
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.G_tOhn1snMAeO3covZlvEwHaEi?w=276&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.yymYaZW4YfTu4518RgOV6QHaFj?w=226&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    faculty: [
-      {
-        fname: 'Sameena',
-        lname: 'Faleiro',
-        designation: 'Assoc Proff',
-      },
-      {
-        fname: 'Sanas',
-        lname: 'Shaikh',
-        designation: 'Asst Proff',
-      },
-    ],
-  },
-  {
-    _id: 4,
-    category: 'Design Thinking',
-    date: new Date('2022-02-24'),
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.dPG-yTQiOvKwzFdfd0YZ2AHaFj?w=267&h=200&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.ncnhbbQMcyXOixJFp-uVlwHaE8?w=287&h=191&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    faculty: [
-      {
-        fname: 'Sameena',
-        lname: 'Faleiro',
-        designation: 'Assoc Proff',
-      },
-    ],
-  },
-]
-
-const student =  [ 
-    {   _id : 1 ,
-        fname : "Ashbourn" ,
-        lanme : "DCunha" ,
-        year_joined : new Date("2019") ,
-        status : null ,
-        department : "Computer Science",
-        credits : [
-            {
-                eid : 1,
-                subid : 2
-            },
-            {
-                eid : 1,
-                subid : 2
-            },
-            {
-                eid : 1,
-                subid : 1
-            },
-            {
-                eid : 5
-            }
-        ] 
-    } ,
-    {   _id : 2 ,
-        fname : "Moses" ,
-        lanme : "Crasto" ,
-        year_joined : new Date("2019") ,
-        status : null ,
-        department : "Computer Science",
-        credits : [
-            {
-                eid : 4
-            },
-            {
-                eid : 1,
-                subid : 2
-            },
-            {
-                eid : 1,
-                subid : 1
-            },
-            {
-                eid : 6
-            }
-        ] 
-    } ,
-]
-
-const events = [
-  {
-    _id: 1,
-    name: 'TechFest',
-    date: new Date('2022-06-20'),
-    photo1:
-      'https://th.bing.com/th/id/OIP.cg-yV4eUkhmvhXN9gBincAHaE8?w=277&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    type: 'event',
-    subevent: [
-      {
-        _id: 1,
-        name: 'FIFA',
-        date: new Date('2022-06-20'),
-        credits: 15,
-        des:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        photo1:
-          'https://th.bing.com/th/id/OIP.i3SufWxvC7270opR0Lm2WwHaE7?w=282&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-        photo2:
-          'https://th.bing.com/th/id/OIP.i7x4BQaj4Qv3E_5Q_6nSdAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-      },
-      {
-        _id: 2,
-        name: 'Blind Coder',
-        date: new Date('2022-06-20'),
-        credits: 15,
-        des:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        photo1:
-          'https://th.bing.com/th/id/OIP.QYyyEbi20aFDtjNQkyqv0AHaFY?w=208&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-        photo2:
-          'https://th.bing.com/th/id/OIP.lG1uFK4v1rJVXCzdq3qV9QHaEK?w=299&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-      },
-    ],
-  },
-  {
-    _id: 2,
-    name: 'IRIX',
-    date: new Date('2022-10-15'),
-    photo1:
-      'https://th.bing.com/th/id/OIP.WykiZDp7CVulnOAC-19MAwHaEB?w=339&h=184&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Computer Science',
-    type: 'event',
-    subevent: [
-      {
-        _id: 1,
-        name: 'Futsal',
-        date: new Date('2022-10-15'),
-        credits: 15,
-        des:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        photo1:
-          'https://th.bing.com/th/id/OIP.i3SufWxvC7270opR0Lm2WwHaE7?w=282&h=188&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-        photo2:
-          'https://th.bing.com/th/id/OIP.i7x4BQaj4Qv3E_5Q_6nSdAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-      },
-    ],
-  },
-]
-const act = [
-  {
-    _id: 4,
-    name: 'Time Management',
-    date: new Date('2022-06-20'),
-    credits: 2,
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true',
-    photo2:
-      'https://github.com/cristan02/cristan02.github.io/blob/main/Images/about.jpg?raw=true',
-    department: 'Computer Science',
-    type: 'activity',
-  },
-  {
-    _id: 8,
-    name: 'Religious Dialogue',
-    date: new Date('2022-10-28'),
-    credits: 15,
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.S8kmS6u9DiSpSdGgLjW-1AHaFj?w=247&h=185&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.xdLbO-F2AL4qNQxW2juaqgHaEj?w=269&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'Sociology',
-    type: 'activity',
-  },
-  {
-    _id: 12,
-    name: 'Voice of Chowgules',
-    date: new Date('2022-05-31'),
-    credits: 25,
-    des:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    photo1:
-      'https://th.bing.com/th/id/OIP.a6OsWPf4lUIgidIGxSPaMAHaD4?w=335&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    photo2:
-      'https://th.bing.com/th/id/OIP.rJIEXLHTta29XX-UXmJ7bQHaHa?w=149&h=180&c=7&r=0&o=5&dpr=1.31&pid=1.7',
-    department: 'College',
-    type: 'activity',
   },
 ]

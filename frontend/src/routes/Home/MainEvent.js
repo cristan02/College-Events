@@ -11,7 +11,7 @@ function MainEvent(props) {
   const location = useLocation()
 
   useEffect(() => {
-     axios.get("http://localhost:5000/home/events/"+ location.state.id).then((res) => {
+     axios.get(props.path + "home/events/"+ location.state.id).then((res) => {
       setSubEvents(res.data);
     },[]);
 

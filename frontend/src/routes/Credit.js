@@ -3,7 +3,7 @@ import React, { useEffect, useState, PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-function Credit() {
+function Credit(props) {
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
   const openModal = () => setShowModal(true)
@@ -15,10 +15,9 @@ function Credit() {
 
   const handleUpdate = (e) => {
     e.preventDefault()
-    console.log(selectedStud)
     const { fname, lname } = selectedStud
     axios
-      .put('http://localhost:5000/student/update/' + selectedStud.roll_no, {
+      .put(props.path + 'student/update/' + selectedStud.roll_no, {
         fname,
         lname,
       })
@@ -30,7 +29,7 @@ function Credit() {
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure?')) {
-      axios.delete('http://localhost:5000/student/delete/' + id).then((res) => {
+      axios.delete(props.path + 'student/delete/' + id).then((res) => {
         if (res.data) {
           alert('Deleted Scccessfully')
           window.location.reload()
@@ -45,7 +44,7 @@ function Credit() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/credits').then((res) => {
+    axios.get(props.path + 'credits').then((res) => {
       setCredits(res.data)
     })
   }, [])
@@ -57,8 +56,8 @@ function Credit() {
         <div className="text-2xl p-2">
           Credits
         </div>
-        <Link to="/Credit/AddSingle">
-          <button className="bg-green-400 hover:bg-green-500  py-4 px-4  h-[30px] mr-10 rounded-full font-semibold flex items-center justify-center">
+        <Link to="/Credit/AddSingle" className='w-fit'>
+          <button className="bg-green-400 hover:bg-green-500  py-4 px-4  h-[30px] rounded-full font-semibold flex items-center justify-center w-fit mr-2">
             <svg
               className="w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"

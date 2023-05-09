@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 
 import axios from "axios";
 
-function Graph() 
+function Graph(props) 
 {
   const [data , setData] = useState()
 
@@ -31,7 +31,7 @@ function Graph()
 
   const getData = () => {
     let tempdata = []
-    axios.get("http://localhost:5000/graph/"+type).then((res) => {
+    axios.get(props.path + "graph/"+type).then((res) => {
       res.data.forEach((data) => {
         tempdata.push({
           name : data.name,

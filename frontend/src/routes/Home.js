@@ -3,9 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 import axios from "axios";
 
-import SubEvent from './Home/SubEvent'
-
-function Home() {
+function Home(props) {
   
   const [events,setEvents] = useState([]);
   const [workshops,setWorkshops] = useState([]);
@@ -61,17 +59,19 @@ function Home() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:5000/home/event").then((res) => {
+    axios.get(props.path + "home/event").then((res) => {
       setEvents(res.data);
     });
-    axios.get("http://localhost:5000/home/workshop").then((res) => {
+    axios.get(props.path + "home/workshop").then((res) => {
       setWorkshops(res.data);
     });
-    axios.get("http://localhost:5000/home/subevent").then((res) => {
+    axios.get(props.path + "home/subevent").then((res) => {
       setActivity(res.data);
-    });
-    
+    })
+  
   },[])
+
+
 
   return(
 

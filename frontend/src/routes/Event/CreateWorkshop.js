@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { formatDate } from "../utils/formatDate";
 
-function Workshop() {
+function Workshop(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [des, setDes] = useState("");
@@ -18,7 +18,7 @@ function Workshop() {
   useEffect(() => {
     const faculty_options = [{ value: "", text: "--Choose an option--" }];
 
-    axios.get("http://localhost:5000/faculty").then((res) => {
+    axios.get(props.path + "faculty").then((res) => {
       res.data.forEach((faculty) => {
         faculty_options.push({
           value: faculty.f_id,
@@ -58,9 +58,8 @@ function Workshop() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(title ,date,des,tchr,photo1,photo2 );
     axios
-      .post("http://localhost:5000/post/workshop", {
+      .post(props.path + "post/workshop", {
         category :  title ,
         wdate : date, 
         des : des,

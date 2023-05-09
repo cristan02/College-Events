@@ -15,7 +15,7 @@ function Filter(props) {
   const [workshop, setWorkshop] = useState([])
   const [event, setEvent] = useState([])
 
-  useEffect(() => {
+  useEffect((props) => {
     filter()
   },[])
 
@@ -25,7 +25,7 @@ function Filter(props) {
 
 
   const filter = () => {
-    axios.get('http://localhost:5000/event/filter/departments').then((res) => {
+    axios.get(props.path + 'event/filter/departments').then((res) => {
       const temp = [{ d_id: 0, name: 'All' }]
       res.data.forEach((dept) => {
         temp.push({
@@ -39,7 +39,7 @@ function Filter(props) {
     if(selectdept == 0)
     {
       axios.get(
-        'http://localhost:5000/event/filter/event/' +
+        props.path + 'event/filter/event/' +
           startDate +
           '/' +
           endDate
@@ -49,7 +49,7 @@ function Filter(props) {
       })
   
       axios.get(
-        'http://localhost:5000/event/filter/activity/' +
+        props.path + 'event/filter/activity/' +
           startDate +
           '/' +
           endDate,
@@ -59,7 +59,7 @@ function Filter(props) {
       })
   
       axios.get(
-        'http://localhost:5000/event/filter/workshop/' +
+        props.path + 'event/filter/workshop/' +
           startDate +
           '/' +
           endDate,
@@ -70,7 +70,7 @@ function Filter(props) {
     }
     else{
       axios.get(
-        'http://localhost:5000/event/filter/event/' +
+        props.path + 'event/filter/event/' +
           selectdept +
           '/' +
           startDate +
@@ -82,7 +82,7 @@ function Filter(props) {
       })
   
       axios.get(
-        'http://localhost:5000/event/filter/activity/' +
+        props.path + 'event/filter/activity/' +
           selectdept +
           '/' +
           startDate +
@@ -94,7 +94,7 @@ function Filter(props) {
       })
   
       axios.get(
-        'http://localhost:5000/event/filter/workshop/' +
+        props.path + 'event/filter/workshop/' +
           selectdept +
           '/' +
           startDate +
