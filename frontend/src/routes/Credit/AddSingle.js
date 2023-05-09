@@ -35,7 +35,7 @@ function AddSingle(props) {
         axios.get(props.path + "get/activities").then((res) => {
           setEventName(res.data);
         });
-      })
+      },[])
 
       const getstudent = (e) => {
         setActiveStudId(e.target.value);
