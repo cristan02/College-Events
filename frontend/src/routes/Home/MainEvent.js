@@ -21,10 +21,10 @@ function MainEvent(props) {
   return (
     <div
       className="text-md text-gray-800 flex flex-col max-w-full
-       py-20 px-20 min-h-screen ml-[253px] items-center w-full"
+       py-20 px-20 min-h-screen ml-[253px]"
     >
       <div className="flex flex-col">
-        <h1 className="text-xl font-bold w-full text-center">{location.state.ename}</h1>
+        <h1 className="text-xl font-bold">{location.state.ename}</h1>
 
         <p className="p-1"></p>
         <div className="">
@@ -45,7 +45,7 @@ function MainEvent(props) {
           {subevents && subevents.map((event) => (
             <div className="flex gap-4  py-2">
               <img
-                className="min-w-[220px] max-w-[220px] max-h-[160px] min-h-[160px] rounded-lg  justify-center items-end  "
+                className="w-[270px]  h-[170px] rounded-lg  justify-center items-end  "
                 src={event.photo1}
               ></img>
 
