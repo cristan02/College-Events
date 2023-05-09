@@ -21,7 +21,7 @@ import Navbar from './components/Navbar'
 
 function App() {
 
-  const path = 'http://localhost:5000/'
+  const path = 'https://college-events-server.vercel.app/'
   return (
     <div className="flex flex-row w-full ">
       <Navbar />
