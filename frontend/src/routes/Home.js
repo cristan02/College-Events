@@ -103,7 +103,7 @@ function Home(props) {
               <p className='p-1'></p>
               <div className='flex flex-row space-x-5 overflow-x-auto  py-1 inviz'>
               {
-                   workshops &&  workshops.map((workshop , index) => (
+                    workshops && workshops.map((workshop , index) => (
                         <div id={index} className='min-w-[200px] max-w-[200px] max-h-[120px] min-h-[120px] gap-2 relative' onClick = {()=>{
                           getWorkshop(workshop)
                         }}>

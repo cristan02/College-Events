@@ -84,8 +84,7 @@ function Credit(props) {
       </div>
 
       <div className="">
-          {credits &&
-            credits.map((stud) => (
+          {credits && credits.map((stud) => (
               <div className="grid grid-cols-6 border-b">
                 
                 <div className="py-2 flex justify-center border-x">{stud.roll_no}</div>
