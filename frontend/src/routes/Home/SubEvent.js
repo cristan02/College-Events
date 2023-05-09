@@ -9,10 +9,10 @@ function SubEvent(props) {
     
   return (
     <div
-    className="text-md text-gray-800 flex flex-col max-w-full
-     py-10 px-10 min-h-screen ml-[253px]"
+    className="text-md text-gray-800 flex flex-col
+     py-20 px-20 min-h-screen ml-[253px] items-center w-full"
   >
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <h1 className="text-xl font-extrabold font-serif flex w-full justify-center">
             {location.state.title}
         </h1>
@@ -21,18 +21,18 @@ function SubEvent(props) {
 
         <div className="flex w-full justify-center gap-4">
           <img
-            className="min-w-[250px] max-w-[280px] max-h-[160px] min-h-[160px] rounded-lg  justify-center items-end  "
+            className="w-[280px]  h-[180px] rounded-lg  justify-center items-end  "
             src={location.state.photo1}
           ></img>
           <img
-            className="min-w-[250px] max-w-[280px] max-h-[160px] min-h-[160px] rounded-lg  justify-center items-end  "
+            className="w-[280px]  h-[180px] rounded-lg  justify-center items-end  "
             src={location.state.photo2}
           ></img>
         </div>
 
         <p className="p-4"></p>
 
-        <div className="px-40">
+        <div className="">
           <div className="flex flex-col ">
             <div className="flex flex-row ">
               <b className="min-w-[125px] ">{location.state.host_label}</b>
