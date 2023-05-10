@@ -10,17 +10,19 @@ function Navbar() {
   const splitLocation = pathname.split("/");
 
   return (
-    <div className="fixed text-gray-800 px-1 bg-white">
+    <div className="fixed text-gray-800  bg-white">
       <div className="w-[250px] min-h-screen h-full border-r-2 py-2">
-        <div className="flex items-center py-4 px-1">
-          <img src="../logo.png" className="w-8"></img>
-          <div className="px-2 text-lg font-bold">PCCAS</div>
+        <div className="flex items-center py-4 px-2">
+          <Link to="/" className='no-underline flex items-center'>
+            <img src="../logo.png" className="w-8"></img>
+            <div className="px-2 text-lg font-bold">PCCAS</div>
+          </Link>
         </div>
 
         <p className="p-0"></p>
 
-        <ul className="first-line:flex flex-col list-none  text-gray-800 justify-left px-1 ">
-          <li className={splitLocation[1] === "" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
+        <ul className="first-line:flex flex-col list-none  text-gray-800 justify-left">
+          <li className={splitLocation[1] === "" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-3 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-3 text-sm  active:bg-blue-100 "  }>
             <Link to="/" className='no-underline'>
               <div className="flex flex-row items-center">
                 <svg
@@ -35,7 +37,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className={splitLocation[1] === "Events" || splitLocation[1] === "Event" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
+          <li className={splitLocation[1] === "Events" || splitLocation[1] === "Event" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-3 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-3 text-sm  active:bg-blue-100 "  }>
             <Link to="/Events">
               <div className="flex flex-row items-center">
                 <svg
@@ -50,7 +52,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className={splitLocation[1] === "Letter" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
+          <li className={splitLocation[1] === "Letter" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-3 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-3 text-sm  active:bg-blue-100 "  }>
             <Link to="/Letter">
               <div className="flex flex-row items-center">
                 <svg
@@ -65,24 +67,8 @@ function Navbar() {
             </Link>
           </li>
 
-          {/* <li className={splitLocation[1] === "Letter" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
-            <Link to="/Letter">
-              <div className="flex flex-row items-center">
-                <svg
-                  className="w-5 h-5 fill-gray-800"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64V400c0 44.2 35.8 80 80 80H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H80c-8.8 0-16-7.2-16-16V64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L240 221.3l57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
-                </svg>
-                <span className="px-3">Departmental performance</span>
-              </div>
-            </Link>
-          </li> */}
 
-
-
-          <li className={splitLocation[1] === "Graph" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
+          <li className={splitLocation[1] === "Graph" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-3 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-3 text-sm  active:bg-blue-100 "  }>
             <Link to="/Graph">
               <div className="flex flex-row items-center">
                 <svg
@@ -97,7 +83,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className={splitLocation[1] === "Credit" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-2 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-2 text-sm  active:bg-blue-100"  }>
+          <li className={splitLocation[1] === "Credit" ? "nav-item transition ease-in-out decoration-black decoration-2 py-3 hover:rounded px-3 text-sm  bg-blue-100" : "nav-item transition ease-in-out decoration-black decoration-2 hover:bg-gray-100 py-3 hover:rounded px-3 text-sm  active:bg-blue-100 "  }>
             <Link to="/Credit">
               <div className="flex flex-row items-center">
                 <svg
