@@ -140,7 +140,7 @@ function Graph(props)
 
             : 
 
-            <div className='text-white'>loading...</div>
+            <div className='text-white'>No data found for this {type === 'yearly...'?'year':'month...'}</div>
           }
           </div>
       </div>
@@ -150,41 +150,3 @@ function Graph(props)
 }
 
 export default Graph;
-
-const department = [
-  "Computer Science" , "Chemistry" , "Physics" , "Maths"
-]
-
-const backgroundColor = ["green","red","yellow","pink","brown","orange","cyan","purple","aqua","coral","crimson","burlywood"]
-
-
-const deptdata = [
-  {
-  "value": 16,
-  "name": "Computer Science"
-  },
-  {
-  "value": 6,
-  "name": "Chemistry"
-  },
-  {
-  "value": 16,
-  "name": "Botany"
-  },
-  {
-  "value": 1,
-  "name": "Sociology"
-  },
-  {
-  "value": 9,
-  "name": "Psychology"
-  },
-  {
-  "value": 1,
-  "name": "French"
-  },
-  {
-  "value": 1,
-  "name": "History"
-  }
-  ]
