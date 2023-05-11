@@ -16,15 +16,15 @@ This README document provides an overview of the College Events Website project.
   6) Visualisation : Shows a visual representation of department performance 
 
 ## Installation and Setup
-  1) Clone the repository from GitHub: git clone https://github.com/cristan02/College-Events
-  2) Install the required dependencies: npm install (for both frontend and backend dir)
-  3) Set up the database connection by providing the appropriate credentials in the backend\local_server.js file.
-  4) Run the node server in backend dir using : node local_servrer.js
-  5) Run Run the development server from frontend dir using : npm start
-  6) Access the website in a web browser at http://localhost:3000 
+  1) Clone the repository from GitHub:  `git clone https://github.com/cristan02/College-Events`
+  3) Install the required dependencies (for both frontend and backend dir) : `npm install`
+  4) Set up the database connection by providing the appropriate credentials in the file `backend\local_server.js`
+  5) Run the node server in backend dir using : `node local_server.js`
+  6) Run Run the development server from frontend dir using : `npm start`
+  7) Access the website in a web browser at `http://localhost:3000` 
 
 ## Screenshots
-~ Website live at : https://college-events.vercel.app/
+### ~ Website live at : `https://college-events.vercel.app`
 
 - Home : shows the latest 10 events , activities and workshops held
 
