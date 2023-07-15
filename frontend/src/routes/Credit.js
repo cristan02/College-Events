@@ -7,6 +7,7 @@ function Credit(props) {
   const [showModal, setShowModal] = useState(false)
   const closeModal = () => setShowModal(false)
   const openModal = () => setShowModal(true)
+  
   const [departments, setDepartments] = useState([])
 
   const [selectedStud, setSelectedStud] = useState({})
