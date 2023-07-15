@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# College Events
+This README document provides an overview of the College Events Website project. The website serves as a platform for organizing and promoting various events taking place within the college campus. It allows students, faculty, and staff members to discover, participate in, and manage events of their interest.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies Used 
+  - Frontend : React.Js, TailwindCss, recharts
+  - Backend : Node.Js, Express.js
+  - Database :  Planetscale MySql
+  - Deployment : Vercel
 
-## Available Scripts
+## Features
+  1) Event Details: Users can view a comprehensive list of events, including their titles, dates, locations, and brief descriptions.
+  2) Search and Filters: Users can search for events based on department, categories, dates, or other criteria, making it easy to find relevant events.
+  3) Event Creation: Users can create and publish new events, including event details, schedules, locations, and any other relevant information.
+  4) Event Management: Users have access to a dashboard where they can manage event credits for students.
+  5) Generate letter : Allows us to view departmental/college activities held in a report format and also download the same
+  6) Visualisation : Shows a visual representation of department performance 
 
-In the project directory, you can run:
+## Installation and Setup
+  1) Clone the repository from GitHub:  `git clone https://github.com/cristan02/College-Events`
+  3) Install the required dependencies (for both frontend and backend dir) : `npm install`
+  4) Set up the database connection by providing the appropriate credentials in the file `backend\local_server.js`
+  5) Run the node server in backend dir using : `node local_server.js`
+  6) Run Run the development server from frontend dir using : `npm start`
+  7) Access the website in a web browser at http://localhost:3000
 
-### `npm start`
+## Screenshots
+### ~ Website live at : https://college-events.vercel.app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Home : shows the latest 10 events , activities and workshops held
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://github.com/cristan02/College-Events/assets/94105472/2fe51456-0475-48bd-97d9-16dfeb1f0a32)
 
-### `npm test`
+- Events : used to add or filter events workshops and activities
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/cristan02/College-Events/assets/94105472/f5da8ba3-f9b2-4b70-92cb-a57463963a9a)
 
-### `npm run build`
+- Generate letters : genetate departmental letters
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/cristan02/College-Events/assets/94105472/f5baefff-040a-4e70-b7b2-b373f2a8db92)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Graphs : visualise departmental performance
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://github.com/cristan02/College-Events/assets/94105472/31ed788a-a9c5-4643-989d-e8926f0924a2)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Credit Hours : credits hours completed by a student
+  
+![image](https://github.com/cristan02/College-Events/assets/94105472/76593541-ee1d-4f46-9e64-b858a9a0d023)
