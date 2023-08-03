@@ -5,8 +5,8 @@ const port = process.env.PORT || 5000
 const cors = require('cors')
 const { json } = require('body-parser')
 
-import { inject } from '@vercel/analytics';
-inject();
+// import { inject } from '@vercel/analytics';
+// inject();
 
 app.use(cors())
 app.use(json())
